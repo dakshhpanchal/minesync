@@ -1,0 +1,16 @@
+server.jar
+
+logs/
+crash-reports/
+
+usercache.json
+banned-ips.json
+banned-players.json
+ops.json.bak
+*.tmp
+*.lock.bak
+
+player.config
+
+.DS_Store
+Thumbs.dbs

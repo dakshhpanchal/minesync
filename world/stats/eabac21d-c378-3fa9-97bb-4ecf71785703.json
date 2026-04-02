@@ -1,15 +1,26 @@
 {
   "stats": {
+    "minecraft:mined": {
+      "minecraft:large_fern": 10
+    },
+    "minecraft:dropped": {
+      "minecraft:wheat_seeds": 2
+    },
+    "minecraft:picked_up": {
+      "minecraft:wheat_seeds": 2
+    },
     "minecraft:custom": {
-      "minecraft:sprint_one_cm": 369,
-      "minecraft:time_since_rest": 226,
-      "minecraft:walk_one_cm": 110,
-      "minecraft:total_world_time": 226,
-      "minecraft:leave_game": 1,
-      "minecraft:fly_one_cm": 671,
-      "minecraft:play_time": 226,
-      "minecraft:jump": 6,
-      "minecraft:time_since_death": 226
+      "minecraft:sprint_one_cm": 3067,
+      "minecraft:time_since_rest": 4605,
+      "minecraft:fall_one_cm": 225,
+      "minecraft:walk_one_cm": 1249,
+      "minecraft:total_world_time": 4605,
+      "minecraft:leave_game": 2,
+      "minecraft:fly_one_cm": 10325,
+      "minecraft:play_time": 4605,
+      "minecraft:jump": 60,
+      "minecraft:time_since_death": 4605,
+      "minecraft:drop": 2
     }
   },
   "DataVersion": 4671

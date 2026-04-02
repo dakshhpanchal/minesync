@@ -1,0 +1,10 @@
+PLAYER_NAME="daksh"
+
+GITHUB_REPO="https://github.com/dakshhpanchal/minesync.git"
+
+MC_VERSION="1.21.11"
+
+MC_RAM_MIN="2G"
+MC_RAM_MAX="4G"
+
+SERVER_PORT=25565

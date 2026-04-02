@@ -1,0 +1,21 @@
+{
+  "stats": {
+    "minecraft:mined": {
+      "minecraft:oak_leaves": 1
+    },
+    "minecraft:custom": {
+      "minecraft:sprint_one_cm": 572,
+      "minecraft:time_since_rest": 344,
+      "minecraft:fall_one_cm": 1200,
+      "minecraft:walk_one_cm": 668,
+      "minecraft:total_world_time": 344,
+      "minecraft:leave_game": 1,
+      "minecraft:fly_one_cm": 1713,
+      "minecraft:damage_taken": 20,
+      "minecraft:play_time": 344,
+      "minecraft:jump": 19,
+      "minecraft:time_since_death": 344
+    }
+  },
+  "DataVersion": 4671
+}

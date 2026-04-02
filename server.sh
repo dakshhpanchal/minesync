@@ -22,6 +22,7 @@ source player.config
 
 LOCK_FILE=".server.lock"
 PID_FILE=".server.pid"
+CLEANED_UP=false
 
 get_public_ip() {
     IP=$(curl -s --max-time 5 https://ifconfig.me) \
@@ -37,6 +38,24 @@ get_tailscale_ip() {
 lock_get() {
     python3 -c "import json; d=json.load(open('$LOCK_FILE')); print(d.get('$1',''))" 2>/dev/null || echo ""
 }
+
+cleanup_on_exit() {
+    echo ""
+    warn "Interrupt received. Cleaning up..."
+
+    if [[ -f "$PID_FILE" ]]; then
+        MC_PID=$(cat "$PID_FILE")
+        if kill -0 "$MC_PID" 2>/dev/null; then
+            kill "$MC_PID" 2>/dev/null || true
+            wait "$MC_PID" 2>/dev/null || true
+        fi
+    fi
+
+    cmd_stop_cleanup
+    exit 0
+}
+
+trap cleanup_on_exit INT TERM
 
 cmd_start() {
     info "Pulling latest world data from GitHub..."
@@ -74,7 +93,7 @@ cmd_start() {
 EOF
 
     git add "$LOCK_FILE"
-    git commit -m "🔒 $PLAYER_NAME started the server"
+    git commit -m "LOCK: $PLAYER_NAME started the server"
     git push origin "$GITHUB_BRANCH" || error "Could not push lock file."
     success "Lock claimed and pushed."
 
@@ -93,6 +112,9 @@ EOF
 }
 
 cmd_stop_cleanup() {
+    $CLEANED_UP && return
+    CLEANED_UP=true
+
     echo ""
     info "Server stopped. Waiting for world to flush..."
     sleep 2
@@ -104,7 +126,7 @@ cmd_stop_cleanup() {
     echo "{}" > "$LOCK_FILE"
 
     git add -A
-    git commit -m "💾 $PLAYER_NAME ended the session" || warn "Nothing to commit."
+    git commit -m "SAVE: $PLAYER_NAME ended the session" || warn "Nothing to commit."
     git push origin "$GITHUB_BRANCH" || warn "Push failed."
 
     success "World data pushed."

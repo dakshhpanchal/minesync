@@ -19,7 +19,7 @@ MineSync enables a group of players to collaboratively host and play on the same
 * All players are collaborators with write access
 * A lock file ensures only one active host
 * World data is pulled on start and pushed on stop
-* Connectivity is established using Tailscale
+* Connectivity is established using Tailscale (shared private network)
 
 ---
 
@@ -70,28 +70,73 @@ Each participant must have:
 * Git installed
 * Java 21 or higher installed
 * Minecraft Java Edition 1.21.11
-* Tailscale installed and authenticated
+* A Tailscale account (individual account per user)
 
 ---
 
 ## Tailscale Setup (Required)
 
-Install Tailscale:
+MineSync uses Tailscale to create a private network between players.
+
+### Step 1: Create an Account
+
+Each player must create their own Tailscale account using:
+
+* Google
+* GitHub
+* Microsoft
+* or other supported identity providers
+
+---
+
+### Step 2: Join the Same Tailnet
+
+One player (project owner) creates the tailnet.
+
+Other players must be invited:
+
+* Open Tailscale admin console
+* Invite users via email
+* Accept invitation on each account
+
+All players must appear in the **same tailnet**.
+
+---
+
+### Step 3: Install Tailscale
+
+On each machine:
 
 ```bash
 curl -fsSL https://tailscale.com/install.sh | sh
 sudo tailscale up
 ```
 
-Login through the browser when prompted.
+Login via browser when prompted.
 
-Verify installation:
+---
+
+### Step 4: Verify Connectivity
+
+Run:
+
+```bash
+tailscale status
+```
+
+You should see all other players listed.
+
+Get your IP:
 
 ```bash
 tailscale ip -4
 ```
 
-You should see an IP in the `100.x.x.x` range. This is the IP used for connections.
+Example:
+
+```
+100.101.102.103
+```
 
 ---
 
@@ -222,20 +267,21 @@ This ensures:
 * No port forwarding required
 * Works on mobile hotspots
 * Works behind CGNAT
-* Consistent connectivity across environments
+* Only invited users can access the network
 
 ---
 
 ## Troubleshooting
 
-| Problem               | Resolution                                   |
-| --------------------- | -------------------------------------------- |
-| Cannot connect        | Ensure both users are connected to Tailscale |
-| No Tailscale IP       | Run `sudo tailscale up`                      |
-| Server not reachable  | Check `tailscale status`                     |
-| Server already active | Run `./server.sh status`                     |
-| Git errors            | Verify repository access                     |
-| Java error            | Install Java 21+                             |
+| Problem               | Resolution                            |
+| --------------------- | ------------------------------------- |
+| Cannot connect        | Ensure both users are in same tailnet |
+| Device not visible    | Check `tailscale status`              |
+| Not in network        | Accept tailnet invite                 |
+| No Tailscale IP       | Run `sudo tailscale up`               |
+| Server already active | Run `./server.sh status`              |
+| Git errors            | Verify repository access              |
+| Java error            | Install Java 21+                      |
 
 ---
 
@@ -255,6 +301,6 @@ MineSync provides:
 * Shared Minecraft hosting
 * Git-based world synchronization
 * Lock-based concurrency control
-* Network abstraction via Tailscale
+* Secure private networking via Tailscale
 
-This design ensures reliability across varied network conditions without requiring router configuration.
+This design ensures reliable operation across different networks without requiring router configuration.

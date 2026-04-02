@@ -94,7 +94,11 @@ EOF
 
 cmd_stop_cleanup() {
     echo ""
-    info "Server stopped. Pushing world data..."
+    info "Server stopped. Waiting for world to flush..."
+    sleep 2
+    sync
+    sleep 1
+    info "Pushing world data..."
 
     rm -f "$PID_FILE"
     echo "{}" > "$LOCK_FILE"

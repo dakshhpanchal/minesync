@@ -26,17 +26,21 @@ PID_FILE=".server.pid"
 get_public_ip() {
     IP=$(curl -s --max-time 5 https://ifconfig.me) \
     || IP=$(curl -s --max-time 5 https://api.ipify.org) \
-    || error "Could not fetch public IP. Check your internet connection."
+    || error "Could not fetch public IP."
     echo "$IP"
 }
 
+get_tailscale_ip() {
+    tailscale ip -4 2>/dev/null | head -n1 || true
+}
+
 lock_get() {
-    python3 -c "import json,sys; d=json.load(open('$LOCK_FILE')); print(d.get('$1',''))" 2>/dev/null || echo ""
+    python3 -c "import json; d=json.load(open('$LOCK_FILE')); print(d.get('$1',''))" 2>/dev/null || echo ""
 }
 
 cmd_start() {
     info "Pulling latest world data from GitHub..."
-    git pull origin "$GITHUB_BRANCH" || error "Git pull failed. Check your internet or repo access."
+    git pull origin "$GITHUB_BRANCH" || error "Git pull failed."
 
     LOCK_HOST=$(lock_get "host")
     if [[ -n "$LOCK_HOST" ]]; then
@@ -51,9 +55,13 @@ cmd_start() {
         error "Stop the server on $LOCK_HOST's machine first."
     fi
 
-    info "Fetching your public IP..."
-    PUBLIC_IP=$(get_public_ip)
-    success "Your public IP: $PUBLIC_IP"
+    info "Fetching connection IP (Tailscale required)..."
+
+    TS_IP=$(get_tailscale_ip)
+    [[ -z "$TS_IP" ]] && error "Tailscale not running. Run: sudo tailscale up"
+
+    PUBLIC_IP="$TS_IP"
+    success "Using Tailscale IP: $PUBLIC_IP"
 
     info "Claiming server lock..."
     TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
@@ -67,13 +75,13 @@ EOF
 
     git add "$LOCK_FILE"
     git commit -m "🔒 $PLAYER_NAME started the server"
-    git push origin "$GITHUB_BRANCH" || error "Could not push lock file. Check your GitHub access."
+    git push origin "$GITHUB_BRANCH" || error "Could not push lock file."
     success "Lock claimed and pushed."
 
     echo ""
     echo -e "${BOLD}${GREEN}Starting Minecraft $MC_VERSION server...${NC}"
-    echo -e "Others can connect at: ${CYAN}$PUBLIC_IP:$SERVER_PORT${NC}"
-    echo -e "Press ${YELLOW}Ctrl+C${NC} or type ${YELLOW}stop${NC} in console to stop the server.\n"
+    echo -e "Connect via Tailscale: ${CYAN}$PUBLIC_IP:$SERVER_PORT${NC}"
+    echo -e "Press ${YELLOW}Ctrl+C${NC} or type ${YELLOW}stop${NC} to stop.\n"
 
     java -Xms"$MC_RAM_MIN" -Xmx"$MC_RAM_MAX" -jar server.jar nogui &
     MC_PID=$!
@@ -86,52 +94,47 @@ EOF
 
 cmd_stop_cleanup() {
     echo ""
-    info "Server stopped. Saving and pushing world data to GitHub..."
+    info "Server stopped. Pushing world data..."
 
-    # Remove pid file
     rm -f "$PID_FILE"
-
-    # Clear lock file
     echo "{}" > "$LOCK_FILE"
 
-    # Push everything
     git add -A
-    git commit -m "💾 $PLAYER_NAME ended the session" || warn "Nothing new to commit."
-    git push origin "$GITHUB_BRANCH" || warn "Could not push to GitHub. Push manually with: git push"
+    git commit -m "💾 $PLAYER_NAME ended the session" || warn "Nothing to commit."
+    git push origin "$GITHUB_BRANCH" || warn "Push failed."
 
-    success "World data pushed to GitHub."
-    success "Lock released. Anyone can now start the server."
+    success "World data pushed."
+    success "Lock released."
 }
 
 cmd_stop() {
     if [[ ! -f "$PID_FILE" ]]; then
-        warn "No PID file found. Is the server running?"
+        warn "No PID file found."
         exit 0
     fi
 
     MC_PID=$(cat "$PID_FILE")
 
     if kill -0 "$MC_PID" 2>/dev/null; then
-        info "Sending stop signal to Minecraft server (PID $MC_PID)..."
+        info "Stopping server (PID $MC_PID)..."
         kill "$MC_PID"
         wait "$MC_PID" 2>/dev/null || true
-        success "Server process stopped."
+        success "Server stopped."
     else
-        warn "Process $MC_PID not found. It may have already stopped."
+        warn "Process not found."
     fi
 
     cmd_stop_cleanup
 }
 
 cmd_status() {
-    git pull origin "$GITHUB_BRANCH" -q || warn "Could not pull latest status from GitHub."
+    git pull origin "$GITHUB_BRANCH" -q || warn "Could not sync status."
 
     LOCK_HOST=$(lock_get "host")
 
     echo ""
     if [[ -z "$LOCK_HOST" ]]; then
-        echo -e "${GREEN}${BOLD}Server is FREE${NC} — no one is hosting right now."
-        echo -e "Run ${CYAN}./server.sh start${NC} to start hosting."
+        echo -e "${GREEN}${BOLD}Server is FREE${NC}"
     else
         LOCK_IP=$(lock_get "ip")
         LOCK_SINCE=$(lock_get "since")
@@ -140,7 +143,7 @@ cmd_status() {
         echo -e "  IP    : ${BOLD}$LOCK_IP:$SERVER_PORT${NC}"
         echo -e "  Since : ${BOLD}$LOCK_SINCE${NC}"
         echo ""
-        echo -e "Connect in Minecraft: ${CYAN}$LOCK_IP:$SERVER_PORT${NC}"
+        echo -e "Connect via Tailscale: ${CYAN}$LOCK_IP:$SERVER_PORT${NC}"
     fi
     echo ""
 }
@@ -151,10 +154,6 @@ case "${1:-}" in
     status) cmd_status ;;
     *)
         echo -e "Usage: ${CYAN}./server.sh [start|stop|status]${NC}"
-        echo ""
-        echo "  start   Pull latest world, claim lock, start server"
-        echo "  stop    Stop server, push world data, release lock"
-        echo "  status  Check who is currently hosting"
         exit 1
         ;;
 esac

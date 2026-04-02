@@ -1,38 +1,118 @@
-# 🧱 Minecraft World — Shared Server
+# MineSync
 
-A self-managed Minecraft 1.21.11 server shared between 4 players.
-World data is synced via GitHub. Only one person hosts at a time.
+MineSync is a self-managed Minecraft 1.21.11 server designed for shared hosting among multiple players.
+World data is synchronized via a single GitHub repository, and connectivity is handled using Tailscale to eliminate the need for port forwarding or public IP configuration.
 
----
-
-## How it works
-
-- World data lives on this GitHub repo
-- Anyone can become the host at any time
-- When you start the server, a lock is written to GitHub so no one else can start
-- When you stop the server, the world is pushed to GitHub and the lock is released
-- Others connect via the host's public IP using port forwarding
+Repository: https://github.com/dakshhpanchal/minesync
 
 ---
 
-## First time setup (everyone does this)
+## Overview
 
-### 1. Prerequisites
-- Git installed
-- Java 21 or higher installed
-- Minecraft Java Edition 1.21.11
+MineSync enables a group of players to collaboratively host and play on the same Minecraft world. Any participant can become the host, but only one host can be active at a time. World state is synchronized through Git, ensuring consistency across sessions.
 
-### 2. Clone the repo
+---
+
+## Architecture
+
+* Single shared GitHub repository (this repository)
+* All players are collaborators with write access
+* A lock file ensures only one active host
+* World data is pulled on start and pushed on stop
+* Connectivity is established using Tailscale
+
+---
+
+## How It Works
+
+1. A player starts the server:
+
+   * Pulls latest world data from GitHub
+   * Checks if another host is active
+   * Acquires lock by updating `.server.lock`
+   * Starts the Minecraft server
+
+2. Other players:
+
+   * Retrieve host IP using `./server.sh status`
+   * Connect using Tailscale IP
+
+3. When the host stops:
+
+   * World data is committed and pushed
+   * Lock is released
+
+---
+
+## Repository Model (Important)
+
+This project requires a **single shared repository**.
+
+### Rules:
+
+* All players must clone **this repository only**
+* All players must be added as **collaborators**
+* Do not fork the repository
+* Do not create separate copies
+
+### Why:
+
+* `.server.lock` must be globally consistent
+* Minecraft world files cannot be merged safely
+* Multiple repositories will cause world divergence and corruption
+
+---
+
+## Prerequisites
+
+Each participant must have:
+
+* Git installed
+* Java 21 or higher installed
+* Minecraft Java Edition 1.21.11
+* Tailscale installed and authenticated
+
+---
+
+## Tailscale Setup (Required)
+
+Install Tailscale:
+
 ```bash
-git clone https://github.com/YOUR_USERNAME/minecraft-world.git
-cd minecraft-world
+curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up
 ```
 
-### 3. Create your player.config
-Create a file called `player.config` in the repo folder (it's gitignored, so it's yours only):
+Login through the browser when prompted.
+
+Verify installation:
+
+```bash
+tailscale ip -4
+```
+
+You should see an IP in the `100.x.x.x` range. This is the IP used for connections.
+
+---
+
+## Initial Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/dakshhpanchal/minesync.git
+cd minesync
+```
+
+---
+
+### 2. Create `player.config`
+
+Create a file named `player.config` in the project directory:
+
 ```bash
 PLAYER_NAME="YourNameHere"
-GITHUB_REPO="https://github.com/YOUR_USERNAME/minecraft-world.git"
+GITHUB_REPO="https://github.com/dakshhpanchal/minesync.git"
 GITHUB_BRANCH="main"
 MC_VERSION="1.21.11"
 SERVER_JAR_URL="https://piston-data.mojang.com/v1/objects/64bb6d763bed0a9f1d632ec347938594144943ed/server.jar"
@@ -41,7 +121,10 @@ MC_RAM_MAX="4G"
 SERVER_PORT=25565
 ```
 
-### 4. Run init
+---
+
+### 3. Initialize
+
 ```bash
 chmod +x init.sh server.sh
 ./init.sh
@@ -49,59 +132,129 @@ chmod +x init.sh server.sh
 
 ---
 
-## Starting the server
+## Starting the Server
+
 ```bash
 ./server.sh start
 ```
 
-- Pulls latest world from GitHub
-- Checks no one else is hosting
-- Fetches your public IP
-- Writes the lock file
-- Starts the Minecraft server
+This will:
+
+* Pull latest world data
+* Check lock status
+* Detect Tailscale IP
+* Acquire lock
+* Start the Minecraft server
+
+Output example:
+
+```
+Using Tailscale IP: 100.x.x.x
+Connect via Tailscale: 100.x.x.x:25565
+```
 
 ---
 
-## Stopping the server
+## Stopping the Server
 
-Either type `stop` in the Minecraft server console, or run in another terminal:
+Stop using:
+
+* `stop` inside Minecraft console
+  or
+
 ```bash
 ./server.sh stop
 ```
 
-This will automatically push the world data to GitHub and release the lock.
+This will:
+
+* Stop the server process
+* Push world data to GitHub
+* Release the lock
 
 ---
 
-## Checking who is hosting
+## Checking Server Status
+
 ```bash
 ./server.sh status
 ```
 
----
+Displays:
 
-## Connecting as a player (not hosting)
-
-1. Run `./server.sh status` to get the host's IP
-2. Open Minecraft → Multiplayer → Add Server
-3. Enter `IP:25565`
-4. Join!
+* Current host
+* Tailscale IP
+* Session start time
 
 ---
 
-## Port forwarding
+## Connecting as a Player
 
-The host needs to forward **port 25565 (TCP)** on their router to their local machine.
-Search: `how to port forward on [your router brand]`
+1. Ensure Tailscale is running:
+
+   ```bash
+   tailscale status
+   ```
+
+2. Get server details:
+
+   ```bash
+   ./server.sh status
+   ```
+
+3. Copy the IP shown
+
+4. In Minecraft:
+
+   * Multiplayer → Add Server
+   * Enter: `IP:25565`
+
+---
+
+## Network Model
+
+```
+Host → Tailscale → Players
+```
+
+This ensures:
+
+* No port forwarding required
+* Works on mobile hotspots
+* Works behind CGNAT
+* Consistent connectivity across environments
 
 ---
 
 ## Troubleshooting
 
-| Problem | Fix |
-|---|---|
-| `player.config not found` | Create it as shown above |
-| `server is already being hosted` | Run `./server.sh status` to see who |
-| `git pull failed` | Check your internet / GitHub access |
-| `Java 21 required` | Install Java 21 from adoptium.net |
-| Friends can't connect | Make sure port 25565 is forwarded on your router |
+| Problem               | Resolution                                   |
+| --------------------- | -------------------------------------------- |
+| Cannot connect        | Ensure both users are connected to Tailscale |
+| No Tailscale IP       | Run `sudo tailscale up`                      |
+| Server not reachable  | Check `tailscale status`                     |
+| Server already active | Run `./server.sh status`                     |
+| Git errors            | Verify repository access                     |
+| Java error            | Install Java 21+                             |
+
+---
+
+## Safety Notes
+
+* Only one host must run the server at a time
+* Do not force push (`git push --force`)
+* Do not modify `.server.lock` manually
+* Always stop the server properly to avoid data loss
+
+---
+
+## Summary
+
+MineSync provides:
+
+* Shared Minecraft hosting
+* Git-based world synchronization
+* Lock-based concurrency control
+* Network abstraction via Tailscale
+
+This design ensures reliability across varied network conditions without requiring router configuration.

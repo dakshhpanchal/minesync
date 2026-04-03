@@ -1,34 +1,11 @@
 {
   "stats": {
-    "minecraft:mined": {
-      "minecraft:powder_snow": 21,
-      "minecraft:short_grass": 1,
-      "minecraft:spruce_log": 2,
-      "minecraft:spruce_leaves": 4
-    },
     "minecraft:custom": {
-      "minecraft:time_since_rest": 4531,
-      "minecraft:walk_one_cm": 7081,
-      "minecraft:leave_game": 2,
-      "minecraft:damage_taken": 139,
-      "minecraft:play_time": 4531,
-      "minecraft:damage_dealt": 70,
-      "minecraft:jump": 186,
-      "minecraft:time_since_death": 4531,
-      "minecraft:sprint_one_cm": 9218,
-      "minecraft:fall_one_cm": 10000,
-      "minecraft:total_world_time": 4531,
-      "minecraft:fly_one_cm": 32392,
-      "minecraft:crouch_one_cm": 554,
-      "minecraft:sneak_time": 305
-    },
-    "minecraft:crafted": {
-      "minecraft:stick": 8,
-      "minecraft:spruce_planks": 8,
-      "minecraft:crafting_table": 1
-    },
-    "minecraft:picked_up": {
-      "minecraft:spruce_log": 2
+      "minecraft:time_since_rest": 74,
+      "minecraft:total_world_time": 74,
+      "minecraft:leave_game": 1,
+      "minecraft:play_time": 74,
+      "minecraft:time_since_death": 74
     }
   },
   "DataVersion": 4671

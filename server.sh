@@ -2,7 +2,6 @@
 
 set -euo pipefail
 
-# Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -24,15 +23,13 @@ LOCK_FILE=".server.lock"
 PID_FILE=".server.pid"
 CLEANED_UP=false
 
-get_public_ip() {
-    IP=$(curl -s --max-time 5 https://ifconfig.me) \
-    || IP=$(curl -s --max-time 5 https://api.ipify.org) \
-    || error "Could not fetch public IP."
-    echo "$IP"
-}
-
-get_tailscale_ip() {
-    tailscale ip -4 2>/dev/null | head -n1 || true
+get_zerotier_ip() {
+    ip addr show 2>/dev/null \
+        | grep -A2 'zt' \
+        | grep 'inet ' \
+        | awk '{print $2}' \
+        | cut -d'/' -f1 \
+        | head -n1 || true
 }
 
 lock_get() {
@@ -42,7 +39,6 @@ lock_get() {
 cleanup_on_exit() {
     echo ""
     warn "Interrupt received. Cleaning up..."
-
     if [[ -f "$PID_FILE" ]]; then
         MC_PID=$(cat "$PID_FILE")
         if kill -0 "$MC_PID" 2>/dev/null; then
@@ -50,7 +46,6 @@ cleanup_on_exit() {
             wait "$MC_PID" 2>/dev/null || true
         fi
     fi
-
     cmd_stop_cleanup
     exit 0
 }
@@ -74,13 +69,10 @@ cmd_start() {
         error "Stop the server on $LOCK_HOST's machine first."
     fi
 
-    info "Fetching connection IP (Tailscale required)..."
-
-    TS_IP=$(get_tailscale_ip)
-    [[ -z "$TS_IP" ]] && error "Tailscale not running. Run: sudo tailscale up"
-
-    PUBLIC_IP="$TS_IP"
-    success "Using Tailscale IP: $PUBLIC_IP"
+    info "Fetching ZeroTier IP..."
+    ZT_IP=$(get_zerotier_ip)
+    [[ -z "$ZT_IP" ]] && error "ZeroTier IP not found. Run: sudo zerotier-cli join $ZEROTIER_NETWORK_ID and get approved."
+    success "Using ZeroTier IP: $ZT_IP"
 
     info "Claiming server lock..."
     TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
@@ -88,7 +80,7 @@ cmd_start() {
 {
   "host": "$PLAYER_NAME",
   "since": "$TIMESTAMP",
-  "ip": "$PUBLIC_IP"
+  "ip": "$ZT_IP"
 }
 EOF
 
@@ -99,15 +91,14 @@ EOF
 
     echo ""
     echo -e "${BOLD}${GREEN}Starting Minecraft $MC_VERSION server...${NC}"
-    echo -e "Connect via Tailscale: ${CYAN}$PUBLIC_IP:$SERVER_PORT${NC}"
-    echo -e "Press ${YELLOW}Ctrl+C${NC} or type ${YELLOW}stop${NC} to stop.\n"
+    echo -e "Connect via ZeroTier: ${CYAN}$ZT_IP:$SERVER_PORT${NC}"
+    echo -e "Press ${YELLOW}Ctrl+C${NC} or type ${YELLOW}stop${NC} in console to stop.\n"
 
     java -Xms"$MC_RAM_MIN" -Xmx"$MC_RAM_MAX" -jar server.jar nogui &
     MC_PID=$!
     echo "$MC_PID" > "$PID_FILE"
 
     wait "$MC_PID" || true
-
     cmd_stop_cleanup
 }
 
@@ -120,22 +111,22 @@ cmd_stop_cleanup() {
     sleep 2
     sync
     sleep 1
-    info "Pushing world data..."
+    info "Pushing world data to GitHub..."
 
     rm -f "$PID_FILE"
     echo "{}" > "$LOCK_FILE"
 
     git add -A
     git commit -m "SAVE: $PLAYER_NAME ended the session" || warn "Nothing to commit."
-    git push origin "$GITHUB_BRANCH" || warn "Push failed."
+    git push origin "$GITHUB_BRANCH" || warn "Push failed. Run: git push manually."
 
     success "World data pushed."
-    success "Lock released."
+    success "Lock released. Anyone can now start the server."
 }
 
 cmd_stop() {
     if [[ ! -f "$PID_FILE" ]]; then
-        warn "No PID file found."
+        warn "No PID file found. Is the server running?"
         exit 0
     fi
 
@@ -147,20 +138,21 @@ cmd_stop() {
         wait "$MC_PID" 2>/dev/null || true
         success "Server stopped."
     else
-        warn "Process not found."
+        warn "Process not found. It may have already stopped."
     fi
 
     cmd_stop_cleanup
 }
 
 cmd_status() {
-    git pull origin "$GITHUB_BRANCH" -q || warn "Could not sync status."
+    git pull origin "$GITHUB_BRANCH" -q || warn "Could not sync status from GitHub."
 
     LOCK_HOST=$(lock_get "host")
 
     echo ""
     if [[ -z "$LOCK_HOST" ]]; then
-        echo -e "${GREEN}${BOLD}Server is FREE${NC}"
+        echo -e "${GREEN}${BOLD}Server is FREE${NC} — no one is hosting right now."
+        echo -e "Run ${CYAN}./server.sh start${NC} to start hosting."
     else
         LOCK_IP=$(lock_get "ip")
         LOCK_SINCE=$(lock_get "since")
@@ -169,7 +161,7 @@ cmd_status() {
         echo -e "  IP    : ${BOLD}$LOCK_IP:$SERVER_PORT${NC}"
         echo -e "  Since : ${BOLD}$LOCK_SINCE${NC}"
         echo ""
-        echo -e "Connect via Tailscale: ${CYAN}$LOCK_IP:$SERVER_PORT${NC}"
+        echo -e "Connect via ZeroTier: ${CYAN}$LOCK_IP:$SERVER_PORT${NC}"
     fi
     echo ""
 }
@@ -180,6 +172,10 @@ case "${1:-}" in
     status) cmd_status ;;
     *)
         echo -e "Usage: ${CYAN}./server.sh [start|stop|status]${NC}"
+        echo ""
+        echo "  start   Pull latest world, claim lock, start server"
+        echo "  stop    Stop server, push world data, release lock"
+        echo "  status  Check who is currently hosting"
         exit 1
         ;;
 esac

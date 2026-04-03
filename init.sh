@@ -32,11 +32,32 @@ if [[ "$JAVA_VER" -lt 21 ]]; then
 fi
 success "Java $JAVA_VER found."
 
+info "Checking ZeroTier..."
+if ! command -v zerotier-cli &>/dev/null; then
+    error "ZeroTier is not installed. Run: curl -s https://install.zerotier.com | sudo bash"
+fi
+
+ZT_STATUS=$(sudo zerotier-cli listnetworks 2>/dev/null | grep "$ZEROTIER_NETWORK_ID" || true)
+if [[ -z "$ZT_STATUS" ]]; then
+    warn "Not joined to ZeroTier network. Joining now..."
+    sudo zerotier-cli join "$ZEROTIER_NETWORK_ID" || error "Failed to join ZeroTier network."
+    echo ""
+    warn "You need to be approved by the network admin at my.zerotier.com"
+    warn "Once approved, re-run this script."
+    exit 0
+fi
+
+ZT_IP=$(ip addr show 2>/dev/null | grep -A2 'zt' | grep 'inet ' | awk '{print $2}' | cut -d'/' -f1 | head -n1 || true)
+if [[ -z "$ZT_IP" ]]; then
+    error "ZeroTier joined but no IP assigned yet. Make sure you are approved on my.zerotier.com"
+fi
+success "ZeroTier active. Your IP: $ZT_IP"
+
 if [[ -f "server.jar" ]]; then
     warn "server.jar already exists, skipping download."
 else
     info "Downloading server.jar for Minecraft $MC_VERSION..."
-    curl -# -L -o server.jar "$SERVER_JAR_URL" || error "Download failed. Check your internet connection or SERVER_JAR_URL in player.config."
+    curl -# -L -o server.jar "$SERVER_JAR_URL" || error "Download failed."
     success "server.jar downloaded."
 fi
 

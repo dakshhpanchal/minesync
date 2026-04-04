@@ -1,0 +1,34 @@
+libpxbackend-1.0.so: cannot open shared object file: No such file or directory
+Failed to load module: /home/mirage/snap/telegram-desktop/common/.cache/gio-modules/libgiolibproxy.so
+Gtk-Message: 00:41:05.501: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+
+(telegram-desktop:148516): Gtk-WARNING **: 00:41:05.654: Theme parsing error: gtk.css:1:21: Failed to import: Error opening file /home/mirage/snap/telegram-desktop/6928/.config/gtk-3.0/colors.css: No such file or directory
+Gtk-Message: 00:41:05.698: Failed to load module "colorreload-gtk-module"
+Gtk-Message: 00:41:05.698: Failed to load module "window-decorations-gtk-module"
+Qt: Session management error: Could not open network socket
+Gtk-Message: 00:41:07.192: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+QPainter::begin: Paint device returned engine == 0, type: 2
+QWidget::render: Cannot render with an inactive painter
+[libvpx-vp9 @ 0x5d857246fac0] v1.14.0
+[libvpx-vp9 @ 0x5d8570741000] v1.14.0
+[libvpx-vp9 @ 0x5d857246fac0] v1.14.0
+[libvpx-vp9 @ 0x5d8570741000] v1.14.0
+[libvpx-vp9 @ 0x5d857499e980] v1.14.0
+[libvpx-vp9 @ 0x5d8574bea440] v1.14.0
+[libvpx-vp9 @ 0x5d857499e980] v1.14.0
+[libvpx-vp9 @ 0x5d8574bea440] v1.14.0
+[libvpx-vp9 @ 0x5d857295d500] v1.14.0
+[libvpx-vp9 @ 0x5d857295d500] v1.14.0
+[libvpx-vp9 @ 0x5d8574629c80] v1.14.0
+[libvpx-vp9 @ 0x5d8574629c80] v1.14.0
+[libvpx-vp9 @ 0x5d8570b730c0] v1.14.0
+[libvpx-vp9 @ 0x5d8570b730c0] v1.14.0
+[libvpx-vp9 @ 0x5d857296a300] v1.14.0
+[libvpx-vp9 @ 0x5d857296a300] v1.14.0
+qt.text.font.db: OpenType support missing for "Open Sans", script 11
+qt.text.font.db: OpenType support missing for "vazirmatn ui nl", script 11
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x5d857544b240] Packet corrupt (stream = 0, dts = 8199032).
+[NULL @ 0x5d8570ae9a40] Invalid NAL unit size (5708 > 2706).
+[NULL @ 0x5d8570ae9a40] missing picture in access unit with size 2710
+[libvpx-vp9 @ 0x5d857431ce40] v1.14.0
+[libvpx-vp9 @ 0x5d857431ce40] v1.14.0

@@ -1909,6 +1909,12 @@
     },
     "done": true
   },
+  "minecraft:husbandry/plant_seed": {
+    "criteria": {
+      "wheat": "2026-04-04 20:13:19 +0530"
+    },
+    "done": true
+  },
   "minecraft:husbandry/breed_an_animal": {
     "criteria": {
       "bred": "2026-04-04 20:15:06 +0530"
@@ -1920,12 +1926,6 @@
       "minecraft:cow": "2026-04-04 20:15:06 +0530"
     },
     "done": false
-  },
-  "minecraft:husbandry/plant_seed": {
-    "criteria": {
-      "wheat": "2026-04-04 20:13:19 +0530"
-    },
-    "done": true
   },
   "DataVersion": 4671
 }

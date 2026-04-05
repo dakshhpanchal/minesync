@@ -509,7 +509,8 @@
       "cooked_beef": "2026-04-04 15:39:05 +0530",
       "beef": "2026-04-05 04:47:00 +0530",
       "baked_potato": "2026-04-05 13:10:35 +0530",
-      "porkchop": "2026-04-05 05:28:00 +0530"
+      "porkchop": "2026-04-05 05:28:00 +0530",
+      "golden_carrot": "2026-04-05 17:28:13 +0530"
     },
     "done": false
   },
@@ -2753,7 +2754,19 @@
     },
     "done": true
   },
+  "minecraft:adventure/salvage_sherd": {
+    "criteria": {
+      "has_sherd": "2026-04-05 15:55:43 +0530"
+    },
+    "done": false
+  },
   "minecraft:recipes/decorations/beehive": {
+    "criteria": {
+      "has_honeycomb": "2026-04-05 15:58:54 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/honeycomb_block": {
     "criteria": {
       "has_honeycomb": "2026-04-05 15:58:54 +0530"
     },
@@ -2771,15 +2784,15 @@
     },
     "done": true
   },
-  "minecraft:adventure/salvage_sherd": {
+  "minecraft:story/shiny_gear": {
     "criteria": {
-      "has_sherd": "2026-04-05 15:55:43 +0530"
+      "diamond_leggings": "2026-04-05 17:55:58 +0530"
     },
-    "done": false
+    "done": true
   },
-  "minecraft:recipes/decorations/honeycomb_block": {
+  "minecraft:adventure/trade": {
     "criteria": {
-      "has_honeycomb": "2026-04-05 15:58:54 +0530"
+      "traded": "2026-04-05 17:11:28 +0530"
     },
     "done": true
   },

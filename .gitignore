@@ -9,7 +9,7 @@ banned-players.json
 ops.json.bak
 *.tmp
 *.lock.bak
-
+digest.txt
 player.config
 
 .DS_Store

@@ -23,13 +23,8 @@ LOCK_FILE=".server.lock"
 PID_FILE=".server.pid"
 CLEANED_UP=false
 
-get_zerotier_ip() {
-    ip addr show 2>/dev/null \
-        | grep -A2 'zt' \
-        | grep 'inet ' \
-        | awk '{print $2}' \
-        | cut -d'/' -f1 \
-        | head -n1 || true
+get_netbird_ip() {
+    netbird status 2>/dev/null | grep -oP '(?<=IP: )\S+' | head -n1 || true
 }
 
 lock_get() {
@@ -69,10 +64,10 @@ cmd_start() {
         error "Stop the server on $LOCK_HOST's machine first."
     fi
 
-    info "Fetching ZeroTier IP..."
-    ZT_IP=$(get_zerotier_ip)
-    [[ -z "$ZT_IP" ]] && error "ZeroTier IP not found. Run: sudo zerotier-cli join $ZEROTIER_NETWORK_ID and get approved."
-    success "Using ZeroTier IP: $ZT_IP"
+    info "Fetching NetBird IP..."
+    NB_IP=$(get_netbird_ip)
+    [[ -z "$NB_IP" ]] && error "NetBird IP not found. Run: sudo netbird up --setup-key $NETBIRD_SETUP_KEY and ensure you're connected."
+    success "Using NetBird IP: $NB_IP"
 
     info "Claiming server lock..."
     TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
@@ -80,7 +75,7 @@ cmd_start() {
 {
   "host": "$PLAYER_NAME",
   "since": "$TIMESTAMP",
-  "ip": "$ZT_IP"
+  "ip": "$NB_IP"
 }
 EOF
 
@@ -91,7 +86,7 @@ EOF
 
     echo ""
     echo -e "${BOLD}${GREEN}Starting Minecraft $MC_VERSION server...${NC}"
-    echo -e "Connect via ZeroTier: ${CYAN}$ZT_IP:$SERVER_PORT${NC}"
+    echo -e "Connect via NetBird: ${CYAN}$NB_IP:$SERVER_PORT${NC}"
     echo -e "Press ${YELLOW}Ctrl+C${NC} or type ${YELLOW}stop${NC} in console to stop.\n"
 
     java -Xms"$MC_RAM_MIN" -Xmx"$MC_RAM_MAX" -jar server.jar nogui &
@@ -161,7 +156,7 @@ cmd_status() {
         echo -e "  IP    : ${BOLD}$LOCK_IP:$SERVER_PORT${NC}"
         echo -e "  Since : ${BOLD}$LOCK_SINCE${NC}"
         echo ""
-        echo -e "Connect via ZeroTier: ${CYAN}$LOCK_IP:$SERVER_PORT${NC}"
+        echo -e "Connect via NetBird: ${CYAN}$LOCK_IP:$SERVER_PORT${NC}"
     fi
     echo ""
 }

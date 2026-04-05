@@ -1,7 +1,7 @@
 # MineSync
 
 A self-managed Minecraft 1.21.11 server for 4 players.
-World data syncs via GitHub. Networking via ZeroTier (no port forwarding, works on hotspots).
+World data syncs via GitHub. Networking via NetBird (no port forwarding, works on hotspots).
 
 Repository: https://github.com/dakshhpanchal/minesync
 
@@ -13,37 +13,32 @@ Repository: https://github.com/dakshhpanchal/minesync
 - Anyone can become the host at any time
 - Starting the server claims a lock on GitHub — no one else can start until it's released
 - Stopping the server pushes the world to GitHub and releases the lock
-- Players connect via ZeroTier private IP — no port forwarding needed
+- Players connect via NetBird private IP — no port forwarding needed
 
 ---
 
-## ZeroTier Setup (everyone, once)
+## NetBird Setup (everyone, once)
 
-### 1. Get the Network ID
-Ask the repo owner for the **ZeroTier Network ID**.
+### 1. Get the Setup Key
+Ask the repo owner for the **NetBird Setup Key** from app.netbird.io → Setup Keys.
 
-### 2. Install ZeroTier
+### 2. Install NetBird
 
 **Linux:**
 ```bash
-curl -s https://install.zerotier.com | sudo bash
-sudo zerotier-cli join YOUR_NETWORK_ID
+curl -fsSL https://pkgs.netbird.io/install.sh | sh
+sudo netbird up --setup-key YOUR_SETUP_KEY
 ```
 
 **Windows:**
-- Download from zerotier.com/download
-- Install, open system tray icon → Join Network → paste Network ID
+- Download from netbird.io/download
+- Install, then run: `netbird up --setup-key YOUR_SETUP_KEY`
 
-### 3. Get approved
-Tell the repo owner your device appeared in the network.
-They'll approve you at my.zerotier.com → Networks → Members → check Auth.
-
-### 4. Verify
+### 3. Verify
 ```bash
-# Linux - check your ZeroTier IP
-ip addr show zt0 | grep 'inet '
+netbird status
 ```
-You should see an IP like `192.168.196.x`
+You should see `Status: Connected` and an IP like `100.x.x.x`
 
 ---
 
@@ -53,7 +48,7 @@ You should see an IP like `192.168.196.x`
 - Git
 - Java 21+
 - Minecraft Java Edition 1.21.11
-- ZeroTier (see above)
+- NetBird (see above)
 
 ### 1. Clone the repo
 ```bash
@@ -71,7 +66,7 @@ SERVER_JAR_URL="https://piston-data.mojang.com/v1/objects/64bb6d763bed0a9f1d632e
 MC_RAM_MIN="2G"
 MC_RAM_MAX="4G"
 SERVER_PORT=25565
-ZEROTIER_NETWORK_ID="YOUR_NETWORK_ID_HERE"
+NETBIRD_SETUP_KEY="YOUR_SETUP_KEY_HERE"
 ```
 
 ### 3. Run init
@@ -89,7 +84,7 @@ chmod +x init.sh server.sh
 
 - Pulls latest world from GitHub
 - Checks no one else is hosting
-- Gets your ZeroTier IP
+- Gets your NetBird IP
 - Claims the lock
 - Starts Minecraft server
 
@@ -115,7 +110,7 @@ Automatically pushes world data and releases the lock.
 
 ## Connecting as a Player
 
-1. Make sure ZeroTier is running
+1. Make sure NetBird is running (`netbird status`)
 2. Run `./server.sh status` to get the host's IP
 3. Minecraft → Multiplayer → Add Server → `IP:25565`
 
@@ -125,11 +120,11 @@ Automatically pushes world data and releases the lock.
 
 | Problem | Fix |
 |---|---|
-| `ZeroTier IP not found` | Run `sudo zerotier-cli join NETWORK_ID` and get approved |
+| `NetBird IP not found` | Run `sudo netbird up --setup-key YOUR_SETUP_KEY` |
 | `Server already being hosted` | Run `./server.sh status` to see who |
 | `Git pull failed` | Check internet / GitHub access |
 | `Java 21 required` | Install from adoptium.net |
-| Friends can't connect | Make sure they're approved on ZeroTier network |
+| Friends can't connect | Make sure they're connected to NetBird (`netbird status`) |
 | `player.config not found` | Create it as shown above |
 
 ---

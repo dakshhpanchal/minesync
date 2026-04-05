@@ -32,26 +32,23 @@ if [[ "$JAVA_VER" -lt 21 ]]; then
 fi
 success "Java $JAVA_VER found."
 
-info "Checking ZeroTier..."
-if ! command -v zerotier-cli &>/dev/null; then
-    error "ZeroTier is not installed. Run: curl -s https://install.zerotier.com | sudo bash"
+info "Checking NetBird..."
+if ! command -v netbird &>/dev/null; then
+    error "NetBird is not installed. Run: curl -fsSL https://pkgs.netbird.io/install.sh | sh"
 fi
 
-ZT_STATUS=$(sudo zerotier-cli listnetworks 2>/dev/null | grep "$ZEROTIER_NETWORK_ID" || true)
-if [[ -z "$ZT_STATUS" ]]; then
-    warn "Not joined to ZeroTier network. Joining now..."
-    sudo zerotier-cli join "$ZEROTIER_NETWORK_ID" || error "Failed to join ZeroTier network."
-    echo ""
-    warn "You need to be approved by the network admin at my.zerotier.com"
-    warn "Once approved, re-run this script."
-    exit 0
+NB_STATUS=$(netbird status 2>/dev/null || true)
+if echo "$NB_STATUS" | grep -q "Disconnected\|not connected"; then
+    warn "NetBird is not connected. Connecting now..."
+    sudo netbird up --setup-key "$NETBIRD_SETUP_KEY" || error "Failed to connect to NetBird network."
+    sleep 3
 fi
 
-ZT_IP=$(ip addr show 2>/dev/null | grep -A2 'zt' | grep 'inet ' | awk '{print $2}' | cut -d'/' -f1 | head -n1 || true)
-if [[ -z "$ZT_IP" ]]; then
-    error "ZeroTier joined but no IP assigned yet. Make sure you are approved on my.zerotier.com"
+NB_IP=$(netbird status 2>/dev/null | grep -oP '(?<=IP: )\S+' | head -n1 || true)
+if [[ -z "$NB_IP" ]]; then
+    error "NetBird connected but no IP assigned yet. Check your setup key or approval at app.netbird.io"
 fi
-success "ZeroTier active. Your IP: $ZT_IP"
+success "NetBird active. Your IP: $NB_IP"
 
 if [[ -f "server.jar" ]]; then
     warn "server.jar already exists, skipping download."

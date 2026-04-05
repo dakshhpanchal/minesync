@@ -406,6 +406,7 @@
       "apple": "2026-04-04 18:23:28 +0530",
       "chicken": "2026-04-04 15:00:45 +0530",
       "bread": "2026-04-04 16:35:25 +0530",
+      "cooked_chicken": "2026-04-05 23:18:31 +0530",
       "rotten_flesh": "2026-04-04 15:03:36 +0530",
       "cooked_beef": "2026-04-04 15:56:04 +0530",
       "beetroot": "2026-04-04 18:54:40 +0530",
@@ -2539,6 +2540,12 @@
   "minecraft:recipes/building_blocks/yellow_stained_glass": {
     "criteria": {
       "has_glass": "2026-04-05 21:37:25 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/repeater": {
+    "criteria": {
+      "has_redstone_torch": "2026-04-05 23:12:55 +0530"
     },
     "done": true
   },

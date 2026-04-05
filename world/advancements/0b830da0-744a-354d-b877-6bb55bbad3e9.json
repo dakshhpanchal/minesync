@@ -506,6 +506,7 @@
       "bread": "2026-04-04 16:20:19 +0530",
       "rotten_flesh": "2026-04-04 16:16:18 +0530",
       "cooked_mutton": "2026-04-05 04:22:27 +0530",
+      "potato": "2026-04-05 22:08:59 +0530",
       "cooked_beef": "2026-04-04 15:39:05 +0530",
       "beef": "2026-04-05 04:47:00 +0530",
       "baked_potato": "2026-04-05 13:10:35 +0530",
@@ -2784,15 +2785,15 @@
     },
     "done": true
   },
-  "minecraft:story/shiny_gear": {
-    "criteria": {
-      "diamond_leggings": "2026-04-05 17:55:58 +0530"
-    },
-    "done": true
-  },
   "minecraft:adventure/trade": {
     "criteria": {
       "traded": "2026-04-05 17:11:28 +0530"
+    },
+    "done": true
+  },
+  "minecraft:story/shiny_gear": {
+    "criteria": {
+      "diamond_leggings": "2026-04-05 17:55:58 +0530"
     },
     "done": true
   },

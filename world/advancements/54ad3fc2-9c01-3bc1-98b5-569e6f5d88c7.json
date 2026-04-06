@@ -7,8 +7,11 @@
   },
   "minecraft:adventure/adventuring_time": {
     "criteria": {
+      "minecraft:cold_ocean": "2026-04-06 11:37:01 +0530",
+      "minecraft:old_growth_birch_forest": "2026-04-06 11:40:02 +0530",
       "minecraft:beach": "2026-04-04 18:54:12 +0530",
       "minecraft:forest": "2026-04-04 18:57:24 +0530",
+      "minecraft:taiga": "2026-04-06 11:40:21 +0530",
       "minecraft:ocean": "2026-04-05 14:17:00 +0530",
       "minecraft:deep_ocean": "2026-04-05 14:28:48 +0530",
       "minecraft:sunflower_plains": "2026-04-04 02:07:16 +0530",
@@ -298,6 +301,7 @@
       "minecraft:spider": "2026-04-04 15:05:24 +0530",
       "minecraft:wither_skeleton": "2026-04-05 03:15:00 +0530",
       "minecraft:zombie": "2026-04-04 02:12:34 +0530",
+      "minecraft:creeper": "2026-04-06 11:29:18 +0530",
       "minecraft:zombie_villager": "2026-04-05 14:37:07 +0530",
       "minecraft:ghast": "2026-04-05 03:10:18 +0530"
     },
@@ -2687,12 +2691,6 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/white_glazed_terracotta": {
-    "criteria": {
-      "has_white_terracotta": "2026-04-06 02:39:11 +0530"
-    },
-    "done": true
-  },
   "minecraft:story/enchant_item": {
     "criteria": {
       "enchanted_item": "2026-04-06 02:38:45 +0530"
@@ -2714,6 +2712,102 @@
   "minecraft:recipes/building_blocks/stripped_oak_wood": {
     "criteria": {
       "has_log": "2026-04-06 02:38:57 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/white_glazed_terracotta": {
+    "criteria": {
+      "has_white_terracotta": "2026-04-06 02:39:11 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/bookshelf": {
+    "criteria": {
+      "has_book": "2026-04-06 11:38:18 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/bowl": {
+    "criteria": {
+      "has_brown_mushroom": "2026-04-06 11:08:00 +0530"
+    },
+    "done": true
+  },
+  "minecraft:nether/obtain_blaze_rod": {
+    "criteria": {
+      "blaze_rod": "2026-04-06 11:08:55 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/rib_armor_trim_smithing_template_smithing_trim": {
+    "criteria": {
+      "has_smithing_trim_template": "2026-04-06 11:05:32 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/lectern": {
+    "criteria": {
+      "has_book": "2026-04-06 11:38:18 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/chiseled_bookshelf": {
+    "criteria": {
+      "has_book": "2026-04-06 11:38:18 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/spruce_wood": {
+    "criteria": {
+      "has_log": "2026-04-06 11:40:28 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/writable_book": {
+    "criteria": {
+      "has_book": "2026-04-06 11:38:18 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/spruce_planks": {
+    "criteria": {
+      "has_logs": "2026-04-06 11:40:28 +0530"
+    },
+    "done": true
+  },
+  "minecraft:story/form_obsidian": {
+    "criteria": {
+      "obsidian": "2026-04-06 11:19:46 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/brewing/blaze_powder": {
+    "criteria": {
+      "has_blaze_rod": "2026-04-06 11:08:55 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/rib_armor_trim_smithing_template": {
+    "criteria": {
+      "has_rib_armor_trim_smithing_template": "2026-04-06 11:05:32 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/enchanting_table": {
+    "criteria": {
+      "has_obsidian": "2026-04-06 11:19:46 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/brewing/brewing_stand": {
+    "criteria": {
+      "has_blaze_rod": "2026-04-06 11:08:55 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/iron_ingot_from_nuggets": {
+    "criteria": {
+      "has_iron_nugget": "2026-04-06 11:37:54 +0530"
     },
     "done": true
   },

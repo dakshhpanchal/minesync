@@ -8,16 +8,17 @@
   "minecraft:adventure/adventuring_time": {
     "criteria": {
       "minecraft:cold_ocean": "2026-04-06 11:37:01 +0530",
-      "minecraft:old_growth_birch_forest": "2026-04-06 11:40:02 +0530",
+      "minecraft:flower_forest": "2026-04-08 03:28:23 +0530",
       "minecraft:beach": "2026-04-04 18:54:12 +0530",
       "minecraft:forest": "2026-04-04 18:57:24 +0530",
       "minecraft:taiga": "2026-04-06 11:40:21 +0530",
-      "minecraft:ocean": "2026-04-05 14:17:00 +0530",
       "minecraft:deep_ocean": "2026-04-05 14:28:48 +0530",
-      "minecraft:sunflower_plains": "2026-04-04 02:07:16 +0530",
-      "minecraft:cherry_grove": "2026-04-04 14:59:56 +0530",
       "minecraft:river": "2026-04-04 18:56:07 +0530",
       "minecraft:dripstone_caves": "2026-04-05 14:01:53 +0530",
+      "minecraft:old_growth_birch_forest": "2026-04-06 11:40:02 +0530",
+      "minecraft:ocean": "2026-04-05 14:17:00 +0530",
+      "minecraft:sunflower_plains": "2026-04-04 02:07:16 +0530",
+      "minecraft:cherry_grove": "2026-04-04 14:59:56 +0530",
       "minecraft:plains": "2026-04-04 18:35:18 +0530"
     },
     "done": false
@@ -296,15 +297,17 @@
     "criteria": {
       "minecraft:blaze": "2026-04-05 03:19:00 +0530",
       "minecraft:skeleton": "2026-04-04 02:31:38 +0530",
-      "minecraft:piglin": "2026-04-05 03:08:42 +0530",
       "minecraft:phantom": "2026-04-06 12:48:56 +0530",
+      "minecraft:witch": "2026-04-08 04:09:51 +0530",
+      "minecraft:wither_skeleton": "2026-04-05 03:15:00 +0530",
+      "minecraft:ghast": "2026-04-05 03:10:18 +0530",
+      "minecraft:piglin": "2026-04-05 03:08:42 +0530",
+      "minecraft:enderman": "2026-04-08 02:18:03 +0530",
       "minecraft:magma_cube": "2026-04-05 03:03:24 +0530",
       "minecraft:spider": "2026-04-04 15:05:24 +0530",
-      "minecraft:wither_skeleton": "2026-04-05 03:15:00 +0530",
       "minecraft:zombie": "2026-04-04 02:12:34 +0530",
       "minecraft:creeper": "2026-04-06 11:29:18 +0530",
-      "minecraft:zombie_villager": "2026-04-05 14:37:07 +0530",
-      "minecraft:ghast": "2026-04-05 03:10:18 +0530"
+      "minecraft:zombie_villager": "2026-04-05 14:37:07 +0530"
     },
     "done": false
   },
@@ -331,6 +334,7 @@
       "cooked_porkchop": "2026-04-04 02:18:42 +0530",
       "rotten_flesh": "2026-04-04 02:12:38 +0530",
       "suspicious_stew": "2026-04-04 19:38:40 +0530",
+      "cookie": "2026-04-08 03:07:43 +0530",
       "cooked_mutton": "2026-04-04 14:55:45 +0530",
       "cooked_beef": "2026-04-05 13:45:31 +0530",
       "golden_carrot": "2026-04-05 14:18:41 +0530",
@@ -1518,7 +1522,8 @@
     "criteria": {
       "minecraft:nether_wastes": "2026-04-04 19:13:57 +0530",
       "minecraft:soul_sand_valley": "2026-04-05 03:07:05 +0530",
-      "minecraft:basalt_deltas": "2026-04-04 18:52:30 +0530"
+      "minecraft:basalt_deltas": "2026-04-04 18:52:30 +0530",
+      "minecraft:warped_forest": "2026-04-08 02:17:41 +0530"
     },
     "done": false
   },
@@ -2896,15 +2901,99 @@
     },
     "done": true
   },
+  "minecraft:recipes/decorations/anvil": {
+    "criteria": {
+      "has_iron_block": "2026-04-06 12:57:19 +0530"
+    },
+    "done": true
+  },
   "minecraft:recipes/decorations/grindstone": {
     "criteria": {
       "has_stone_slab": "2026-04-06 13:06:57 +0530"
     },
     "done": true
   },
-  "minecraft:recipes/decorations/anvil": {
+  "minecraft:recipes/misc/emerald": {
     "criteria": {
-      "has_iron_block": "2026-04-06 12:57:19 +0530"
+      "has_emerald_block": "2026-04-08 01:40:28 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/copper_nugget_from_smelting": {
+    "criteria": {
+      "has_copper_helmet": "2026-04-08 04:21:17 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/brewing/magma_cream": {
+    "criteria": {
+      "has_blaze_powder": "2026-04-08 02:26:00 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/end_crystal": {
+    "criteria": {
+      "has_ender_eye": "2026-04-08 02:26:04 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/copper_nugget_from_blasting": {
+    "criteria": {
+      "has_copper_helmet": "2026-04-08 04:21:17 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cooked_salmon": {
+    "criteria": {
+      "has_salmon": "2026-04-08 03:24:48 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/fire_charge": {
+    "criteria": {
+      "has_blaze_powder": "2026-04-08 02:26:00 +0530"
+    },
+    "done": true
+  },
+  "minecraft:husbandry/complete_catalogue": {
+    "criteria": {
+      "minecraft:tabby": "2026-04-08 03:25:59 +0530"
+    },
+    "done": false
+  },
+  "minecraft:husbandry/tame_an_animal": {
+    "criteria": {
+      "tamed_animal": "2026-04-08 03:25:59 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cooked_salmon_from_smoking": {
+    "criteria": {
+      "has_salmon": "2026-04-08 03:24:48 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cooked_salmon_from_campfire_cooking": {
+    "criteria": {
+      "has_salmon": "2026-04-08 03:24:48 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/ender_eye": {
+    "criteria": {
+      "has_blaze_powder": "2026-04-08 02:26:00 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/ender_chest": {
+    "criteria": {
+      "has_ender_eye": "2026-04-08 02:26:04 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/warped_fungus_on_a_stick": {
+    "criteria": {
+      "has_warped_fungus": "2026-04-08 02:18:15 +0530"
     },
     "done": true
   },

@@ -2919,13 +2919,25 @@
     },
     "done": true
   },
-  "minecraft:recipes/misc/copper_nugget_from_smelting": {
+  "minecraft:recipes/transportation/warped_fungus_on_a_stick": {
     "criteria": {
-      "has_copper_helmet": "2026-04-08 04:21:17 +0530"
+      "has_warped_fungus": "2026-04-08 02:18:15 +0530"
     },
     "done": true
   },
   "minecraft:recipes/brewing/magma_cream": {
+    "criteria": {
+      "has_blaze_powder": "2026-04-08 02:26:00 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/fire_charge": {
+    "criteria": {
+      "has_blaze_powder": "2026-04-08 02:26:00 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/ender_eye": {
     "criteria": {
       "has_blaze_powder": "2026-04-08 02:26:00 +0530"
     },
@@ -2937,33 +2949,15 @@
     },
     "done": true
   },
-  "minecraft:recipes/misc/copper_nugget_from_blasting": {
+  "minecraft:recipes/decorations/ender_chest": {
     "criteria": {
-      "has_copper_helmet": "2026-04-08 04:21:17 +0530"
+      "has_ender_eye": "2026-04-08 02:26:04 +0530"
     },
     "done": true
   },
   "minecraft:recipes/food/cooked_salmon": {
     "criteria": {
       "has_salmon": "2026-04-08 03:24:48 +0530"
-    },
-    "done": true
-  },
-  "minecraft:recipes/misc/fire_charge": {
-    "criteria": {
-      "has_blaze_powder": "2026-04-08 02:26:00 +0530"
-    },
-    "done": true
-  },
-  "minecraft:husbandry/complete_catalogue": {
-    "criteria": {
-      "minecraft:tabby": "2026-04-08 03:25:59 +0530"
-    },
-    "done": false
-  },
-  "minecraft:husbandry/tame_an_animal": {
-    "criteria": {
-      "tamed_animal": "2026-04-08 03:25:59 +0530"
     },
     "done": true
   },
@@ -2979,21 +2973,45 @@
     },
     "done": true
   },
-  "minecraft:recipes/misc/ender_eye": {
+  "minecraft:husbandry/complete_catalogue": {
     "criteria": {
-      "has_blaze_powder": "2026-04-08 02:26:00 +0530"
+      "minecraft:tabby": "2026-04-08 03:25:59 +0530"
+    },
+    "done": false
+  },
+  "minecraft:husbandry/tame_an_animal": {
+    "criteria": {
+      "tamed_animal": "2026-04-08 03:25:59 +0530"
     },
     "done": true
   },
-  "minecraft:recipes/decorations/ender_chest": {
+  "minecraft:recipes/misc/copper_nugget_from_smelting": {
     "criteria": {
-      "has_ender_eye": "2026-04-08 02:26:04 +0530"
+      "has_copper_helmet": "2026-04-08 04:21:17 +0530"
     },
     "done": true
   },
-  "minecraft:recipes/transportation/warped_fungus_on_a_stick": {
+  "minecraft:recipes/misc/copper_nugget_from_blasting": {
     "criteria": {
-      "has_warped_fungus": "2026-04-08 02:18:15 +0530"
+      "has_copper_helmet": "2026-04-08 04:21:17 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/copper_ingot_from_blasting_raw_copper": {
+    "criteria": {
+      "has_raw_copper": "2026-04-08 18:39:48 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/raw_copper_block": {
+    "criteria": {
+      "has_raw_copper": "2026-04-08 18:39:48 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/copper_ingot_from_smelting_raw_copper": {
+    "criteria": {
+      "has_raw_copper": "2026-04-08 18:39:48 +0530"
     },
     "done": true
   },

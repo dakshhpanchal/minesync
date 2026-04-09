@@ -460,9 +460,11 @@
     "criteria": {
       "minecraft:skeleton": "2026-04-04 22:36:09 +0530",
       "minecraft:magma_cube": "2026-04-08 01:55:14 +0530",
+      "minecraft:witch": "2026-04-09 07:03:37 +0530",
       "minecraft:spider": "2026-04-04 22:53:25 +0530",
       "minecraft:zombie": "2026-04-04 22:32:33 +0530",
-      "minecraft:creeper": "2026-04-04 22:38:09 +0530"
+      "minecraft:creeper": "2026-04-04 22:38:09 +0530",
+      "minecraft:zombie_villager": "2026-04-09 07:04:46 +0530"
     },
     "done": false
   },
@@ -481,11 +483,13 @@
   "minecraft:husbandry/balanced_diet": {
     "criteria": {
       "cooked_porkchop": "2026-04-04 22:59:09 +0530",
+      "apple": "2026-04-09 06:29:48 +0530",
       "chicken": "2026-04-04 22:53:51 +0530",
       "bread": "2026-04-05 04:00:47 +0530",
       "cooked_chicken": "2026-04-04 22:53:09 +0530",
       "cooked_mutton": "2026-04-04 22:59:05 +0530",
       "cooked_cod": "2026-04-04 22:32:49 +0530",
+      "salmon": "2026-04-09 06:23:10 +0530",
       "cooked_beef": "2026-04-04 23:10:46 +0530",
       "golden_carrot": "2026-04-08 01:33:28 +0530",
       "carrot": "2026-04-08 01:50:01 +0530"
@@ -2334,6 +2338,72 @@
   "minecraft:recipes/misc/nether_brick": {
     "criteria": {
       "has_netherrack": "2026-04-08 02:10:25 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/spruce_sign": {
+    "criteria": {
+      "has_planks": "2026-04-09 06:21:27 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/spruce_fence": {
+    "criteria": {
+      "has_planks": "2026-04-09 06:21:27 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/spruce_slab": {
+    "criteria": {
+      "has_planks": "2026-04-09 06:21:27 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/spruce_button": {
+    "criteria": {
+      "has_planks": "2026-04-09 06:21:27 +0530"
+    },
+    "done": true
+  },
+  "minecraft:story/lava_bucket": {
+    "criteria": {
+      "lava_bucket": "2026-04-09 06:33:01 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/spruce_pressure_plate": {
+    "criteria": {
+      "has_planks": "2026-04-09 06:21:27 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/spruce_trapdoor": {
+    "criteria": {
+      "has_planks": "2026-04-09 06:21:27 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/spruce_door": {
+    "criteria": {
+      "has_planks": "2026-04-09 06:21:27 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/spruce_fence_gate": {
+    "criteria": {
+      "has_planks": "2026-04-09 06:21:27 +0530"
+    },
+    "done": true
+  },
+  "minecraft:husbandry/plant_seed": {
+    "criteria": {
+      "wheat": "2026-04-09 06:27:28 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/spruce_stairs": {
+    "criteria": {
+      "has_planks": "2026-04-09 06:21:27 +0530"
     },
     "done": true
   },

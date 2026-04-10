@@ -2365,12 +2365,6 @@
     },
     "done": true
   },
-  "minecraft:story/lava_bucket": {
-    "criteria": {
-      "lava_bucket": "2026-04-09 06:33:01 +0530"
-    },
-    "done": true
-  },
   "minecraft:recipes/redstone/spruce_pressure_plate": {
     "criteria": {
       "has_planks": "2026-04-09 06:21:27 +0530"
@@ -2395,15 +2389,21 @@
     },
     "done": true
   },
+  "minecraft:recipes/building_blocks/spruce_stairs": {
+    "criteria": {
+      "has_planks": "2026-04-09 06:21:27 +0530"
+    },
+    "done": true
+  },
   "minecraft:husbandry/plant_seed": {
     "criteria": {
       "wheat": "2026-04-09 06:27:28 +0530"
     },
     "done": true
   },
-  "minecraft:recipes/building_blocks/spruce_stairs": {
+  "minecraft:story/lava_bucket": {
     "criteria": {
-      "has_planks": "2026-04-09 06:21:27 +0530"
+      "lava_bucket": "2026-04-09 06:33:01 +0530"
     },
     "done": true
   },

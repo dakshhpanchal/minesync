@@ -3156,15 +3156,15 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/polished_blackstone_brick_wall_from_blackstone_stonecutting": {
-    "criteria": {
-      "has_blackstone": "2026-04-13 01:04:31 +0530"
-    },
-    "done": true
-  },
   "minecraft:recipes/building_blocks/dried_ghast": {
     "criteria": {
       "has_ghast_tear": "2026-04-13 01:00:05 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/polished_blackstone_brick_wall_from_blackstone_stonecutting": {
+    "criteria": {
+      "has_blackstone": "2026-04-13 01:04:31 +0530"
     },
     "done": true
   },

@@ -14,6 +14,7 @@
       "minecraft:taiga": "2026-04-04 23:16:01 +0530",
       "minecraft:river": "2026-04-04 23:01:22 +0530",
       "minecraft:dripstone_caves": "2026-04-05 02:40:07 +0530",
+      "minecraft:deep_cold_ocean": "2026-04-12 23:43:02 +0530",
       "minecraft:deep_dark": "2026-04-05 04:35:11 +0530",
       "minecraft:ocean": "2026-04-04 22:30:19 +0530",
       "minecraft:cherry_grove": "2026-04-04 22:26:06 +0530",
@@ -467,6 +468,7 @@
       "minecraft:ghast": "2026-04-12 05:21:24 +0530",
       "minecraft:cave_spider": "2026-04-12 03:01:35 +0530",
       "minecraft:piglin": "2026-04-12 07:56:57 +0530",
+      "minecraft:zombie_horse": "2026-04-12 23:08:54 +0530",
       "minecraft:enderman": "2026-04-12 08:26:02 +0530",
       "minecraft:magma_cube": "2026-04-08 01:55:14 +0530",
       "minecraft:spider": "2026-04-04 22:53:25 +0530",
@@ -496,6 +498,7 @@
       "chicken": "2026-04-04 22:53:51 +0530",
       "bread": "2026-04-05 04:00:47 +0530",
       "cooked_chicken": "2026-04-04 22:53:09 +0530",
+      "cookie": "2026-04-12 23:38:43 +0530",
       "cooked_mutton": "2026-04-04 22:59:05 +0530",
       "cooked_cod": "2026-04-04 22:32:49 +0530",
       "salmon": "2026-04-09 06:23:10 +0530",
@@ -3046,12 +3049,6 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/end_crystal": {
-    "criteria": {
-      "has_ender_eye": "2026-04-12 08:50:14 +0530"
-    },
-    "done": true
-  },
   "minecraft:recipes/misc/fire_charge": {
     "criteria": {
       "has_blaze_powder": "2026-04-12 08:50:07 +0530"
@@ -3064,9 +3061,99 @@
     },
     "done": true
   },
+  "minecraft:recipes/decorations/end_crystal": {
+    "criteria": {
+      "has_ender_eye": "2026-04-12 08:50:14 +0530"
+    },
+    "done": true
+  },
   "minecraft:recipes/decorations/ender_chest": {
     "criteria": {
       "has_ender_eye": "2026-04-12 08:50:14 +0530"
+    },
+    "done": true
+  },
+  "minecraft:nether/obtain_crying_obsidian": {
+    "criteria": {
+      "crying_obsidian": "2026-04-13 01:07:58 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/bowl": {
+    "criteria": {
+      "has_brown_mushroom": "2026-04-12 23:12:24 +0530"
+    },
+    "done": true
+  },
+  "minecraft:nether/distract_piglin": {
+    "criteria": {
+      "distract_piglin": "2026-04-12 23:14:08 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/nether_bricks": {
+    "criteria": {
+      "has_nether_brick": "2026-04-12 23:20:19 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/respawn_anchor": {
+    "criteria": {
+      "has_obsidian": "2026-04-13 01:07:58 +0530"
+    },
+    "done": true
+  },
+  "minecraft:nether/get_wither_skull": {
+    "criteria": {
+      "wither_skull": "2026-04-12 23:30:42 +0530"
+    },
+    "done": true
+  },
+  "minecraft:story/form_obsidian": {
+    "criteria": {
+      "obsidian": "2026-04-12 23:19:42 +0530"
+    },
+    "done": true
+  },
+  "minecraft:nether/return_to_sender": {
+    "criteria": {
+      "killed_ghast": "2026-04-12 23:23:26 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/glowstone": {
+    "criteria": {
+      "has_glowstone_dust": "2026-04-13 01:08:03 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/mushroom_stew": {
+    "criteria": {
+      "has_brown_mushroom": "2026-04-12 23:12:24 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/enchanting_table": {
+    "criteria": {
+      "has_obsidian": "2026-04-12 23:19:42 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/spectral_arrow": {
+    "criteria": {
+      "has_glowstone_dust": "2026-04-13 01:08:03 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/skull_banner_pattern": {
+    "criteria": {
+      "has_wither_skeleton_skull": "2026-04-12 23:30:42 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/warped_fungus_on_a_stick": {
+    "criteria": {
+      "has_warped_fungus": "2026-04-13 01:08:07 +0530"
     },
     "done": true
   },

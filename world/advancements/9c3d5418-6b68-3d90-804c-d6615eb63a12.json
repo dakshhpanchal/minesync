@@ -3073,13 +3073,13 @@
     },
     "done": true
   },
-  "minecraft:nether/obtain_crying_obsidian": {
+  "minecraft:recipes/misc/bowl": {
     "criteria": {
-      "crying_obsidian": "2026-04-13 01:07:58 +0530"
+      "has_brown_mushroom": "2026-04-12 23:12:24 +0530"
     },
     "done": true
   },
-  "minecraft:recipes/misc/bowl": {
+  "minecraft:recipes/food/mushroom_stew": {
     "criteria": {
       "has_brown_mushroom": "2026-04-12 23:12:24 +0530"
     },
@@ -3091,45 +3091,9 @@
     },
     "done": true
   },
-  "minecraft:recipes/building_blocks/nether_bricks": {
-    "criteria": {
-      "has_nether_brick": "2026-04-12 23:20:19 +0530"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/respawn_anchor": {
-    "criteria": {
-      "has_obsidian": "2026-04-13 01:07:58 +0530"
-    },
-    "done": true
-  },
-  "minecraft:nether/get_wither_skull": {
-    "criteria": {
-      "wither_skull": "2026-04-12 23:30:42 +0530"
-    },
-    "done": true
-  },
   "minecraft:story/form_obsidian": {
     "criteria": {
       "obsidian": "2026-04-12 23:19:42 +0530"
-    },
-    "done": true
-  },
-  "minecraft:nether/return_to_sender": {
-    "criteria": {
-      "killed_ghast": "2026-04-12 23:23:26 +0530"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/glowstone": {
-    "criteria": {
-      "has_glowstone_dust": "2026-04-13 01:08:03 +0530"
-    },
-    "done": true
-  },
-  "minecraft:recipes/food/mushroom_stew": {
-    "criteria": {
-      "has_brown_mushroom": "2026-04-12 23:12:24 +0530"
     },
     "done": true
   },
@@ -3139,15 +3103,51 @@
     },
     "done": true
   },
-  "minecraft:recipes/combat/spectral_arrow": {
+  "minecraft:recipes/building_blocks/nether_bricks": {
     "criteria": {
-      "has_glowstone_dust": "2026-04-13 01:08:03 +0530"
+      "has_nether_brick": "2026-04-12 23:20:19 +0530"
+    },
+    "done": true
+  },
+  "minecraft:nether/return_to_sender": {
+    "criteria": {
+      "killed_ghast": "2026-04-12 23:23:26 +0530"
+    },
+    "done": true
+  },
+  "minecraft:nether/get_wither_skull": {
+    "criteria": {
+      "wither_skull": "2026-04-12 23:30:42 +0530"
     },
     "done": true
   },
   "minecraft:recipes/misc/skull_banner_pattern": {
     "criteria": {
       "has_wither_skeleton_skull": "2026-04-12 23:30:42 +0530"
+    },
+    "done": true
+  },
+  "minecraft:nether/obtain_crying_obsidian": {
+    "criteria": {
+      "crying_obsidian": "2026-04-13 01:07:58 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/respawn_anchor": {
+    "criteria": {
+      "has_obsidian": "2026-04-13 01:07:58 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/glowstone": {
+    "criteria": {
+      "has_glowstone_dust": "2026-04-13 01:08:03 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/spectral_arrow": {
+    "criteria": {
+      "has_glowstone_dust": "2026-04-13 01:08:03 +0530"
     },
     "done": true
   },

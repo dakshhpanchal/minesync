@@ -3205,12 +3205,6 @@
     },
     "done": true
   },
-  "minecraft:husbandry/place_dried_ghast_in_water": {
-    "criteria": {
-      "place_dried_ghast_in_water": "2026-04-15 15:51:29 +0530"
-    },
-    "done": true
-  },
   "minecraft:recipes/combat/black_harness": {
     "criteria": {
       "has_dried_ghast": "2026-04-15 15:49:58 +0530"
@@ -3256,6 +3250,24 @@
   "minecraft:recipes/combat/blue_harness": {
     "criteria": {
       "has_dried_ghast": "2026-04-15 15:49:58 +0530"
+    },
+    "done": true
+  },
+  "minecraft:husbandry/place_dried_ghast_in_water": {
+    "criteria": {
+      "place_dried_ghast_in_water": "2026-04-15 15:51:29 +0530"
+    },
+    "done": true
+  },
+  "minecraft:husbandry/whole_pack": {
+    "criteria": {
+      "minecraft:woods": "2026-04-15 16:53:58 +0530"
+    },
+    "done": false
+  },
+  "minecraft:husbandry/tame_an_animal": {
+    "criteria": {
+      "tamed_animal": "2026-04-15 16:53:58 +0530"
     },
     "done": true
   },

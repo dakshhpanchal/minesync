@@ -472,6 +472,7 @@
       "minecraft:enderman": "2026-04-12 08:26:02 +0530",
       "minecraft:magma_cube": "2026-04-08 01:55:14 +0530",
       "minecraft:spider": "2026-04-04 22:53:25 +0530",
+      "minecraft:piglin_brute": "2026-04-24 00:33:01 +0530",
       "minecraft:zombie": "2026-04-04 22:32:33 +0530",
       "minecraft:creeper": "2026-04-04 22:38:09 +0530",
       "minecraft:drowned": "2026-04-12 04:26:39 +0530",
@@ -3388,6 +3389,30 @@
   "minecraft:recipes/decorations/sandstone_wall": {
     "criteria": {
       "has_sandstone": "2026-04-20 08:40:03 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/netherite_upgrade_smithing_template": {
+    "criteria": {
+      "has_netherite_upgrade_smithing_template": "2026-04-24 00:33:40 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/netherite_ingot": {
+    "criteria": {
+      "has_netherite_scrap": "2026-04-24 00:43:42 +0530"
+    },
+    "done": true
+  },
+  "minecraft:nether/loot_bastion": {
+    "criteria": {
+      "loot_bastion_treasure": "2026-04-24 00:33:17 +0530"
+    },
+    "done": true
+  },
+  "minecraft:nether/find_bastion": {
+    "criteria": {
+      "bastion": "2026-04-24 00:27:09 +0530"
     },
     "done": true
   },

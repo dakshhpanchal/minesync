@@ -3392,15 +3392,9 @@
     },
     "done": true
   },
-  "minecraft:recipes/misc/netherite_upgrade_smithing_template": {
+  "minecraft:nether/find_bastion": {
     "criteria": {
-      "has_netherite_upgrade_smithing_template": "2026-04-24 00:33:40 +0530"
-    },
-    "done": true
-  },
-  "minecraft:recipes/misc/netherite_ingot": {
-    "criteria": {
-      "has_netherite_scrap": "2026-04-24 00:43:42 +0530"
+      "bastion": "2026-04-24 00:27:09 +0530"
     },
     "done": true
   },
@@ -3410,9 +3404,15 @@
     },
     "done": true
   },
-  "minecraft:nether/find_bastion": {
+  "minecraft:recipes/misc/netherite_upgrade_smithing_template": {
     "criteria": {
-      "bastion": "2026-04-24 00:27:09 +0530"
+      "has_netherite_upgrade_smithing_template": "2026-04-24 00:33:40 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/netherite_ingot": {
+    "criteria": {
+      "has_netherite_scrap": "2026-04-24 00:43:42 +0530"
     },
     "done": true
   },

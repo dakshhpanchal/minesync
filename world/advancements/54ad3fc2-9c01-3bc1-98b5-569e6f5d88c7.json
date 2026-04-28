@@ -3366,24 +3366,6 @@
     },
     "done": true
   },
-  "minecraft:recipes/building_blocks/polished_blackstone_stairs": {
-    "criteria": {
-      "has_polished_blackstone": "2026-04-26 21:46:19 +0530"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/polished_blackstone_brick_stairs_from_polished_blackstone_stonecutting": {
-    "criteria": {
-      "has_polished_blackstone": "2026-04-26 21:46:19 +0530"
-    },
-    "done": true
-  },
-  "minecraft:recipes/redstone/polished_blackstone_button": {
-    "criteria": {
-      "has_polished_blackstone": "2026-04-26 21:46:19 +0530"
-    },
-    "done": true
-  },
   "minecraft:recipes/combat/red_harness": {
     "criteria": {
       "has_dried_ghast": "2026-04-26 21:35:29 +0530"
@@ -3393,12 +3375,6 @@
   "minecraft:recipes/combat/green_harness": {
     "criteria": {
       "has_dried_ghast": "2026-04-26 21:35:29 +0530"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/polished_blackstone_slab": {
-    "criteria": {
-      "has_polished_blackstone": "2026-04-26 21:46:19 +0530"
     },
     "done": true
   },
@@ -3432,18 +3408,6 @@
     },
     "done": true
   },
-  "minecraft:recipes/building_blocks/polished_blackstone_bricks_from_polished_blackstone_stonecutting": {
-    "criteria": {
-      "has_polished_blackstone": "2026-04-26 21:46:19 +0530"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/nether_bricks": {
-    "criteria": {
-      "has_nether_brick": "2026-04-26 21:35:37 +0530"
-    },
-    "done": true
-  },
   "minecraft:recipes/combat/pink_harness": {
     "criteria": {
       "has_dried_ghast": "2026-04-26 21:35:29 +0530"
@@ -3453,6 +3417,72 @@
   "minecraft:recipes/combat/orange_harness": {
     "criteria": {
       "has_dried_ghast": "2026-04-26 21:35:29 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/light_blue_harness": {
+    "criteria": {
+      "has_dried_ghast": "2026-04-26 21:35:29 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/cyan_harness": {
+    "criteria": {
+      "has_dried_ghast": "2026-04-26 21:35:29 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/brown_harness": {
+    "criteria": {
+      "has_dried_ghast": "2026-04-26 21:35:29 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/lime_harness": {
+    "criteria": {
+      "has_dried_ghast": "2026-04-26 21:35:29 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/blue_harness": {
+    "criteria": {
+      "has_dried_ghast": "2026-04-26 21:35:29 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/nether_bricks": {
+    "criteria": {
+      "has_nether_brick": "2026-04-26 21:35:37 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_blackstone_stairs": {
+    "criteria": {
+      "has_polished_blackstone": "2026-04-26 21:46:19 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_blackstone_brick_stairs_from_polished_blackstone_stonecutting": {
+    "criteria": {
+      "has_polished_blackstone": "2026-04-26 21:46:19 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/polished_blackstone_button": {
+    "criteria": {
+      "has_polished_blackstone": "2026-04-26 21:46:19 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_blackstone_slab": {
+    "criteria": {
+      "has_polished_blackstone": "2026-04-26 21:46:19 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_blackstone_bricks_from_polished_blackstone_stonecutting": {
+    "criteria": {
+      "has_polished_blackstone": "2026-04-26 21:46:19 +0530"
     },
     "done": true
   },
@@ -3468,21 +3498,9 @@
     },
     "done": true
   },
-  "minecraft:recipes/combat/light_blue_harness": {
-    "criteria": {
-      "has_dried_ghast": "2026-04-26 21:35:29 +0530"
-    },
-    "done": true
-  },
   "minecraft:recipes/building_blocks/polished_blackstone_slab_from_polished_blackstone_stonecutting": {
     "criteria": {
       "has_polished_blackstone": "2026-04-26 21:46:19 +0530"
-    },
-    "done": true
-  },
-  "minecraft:recipes/combat/cyan_harness": {
-    "criteria": {
-      "has_dried_ghast": "2026-04-26 21:35:29 +0530"
     },
     "done": true
   },
@@ -3498,27 +3516,9 @@
     },
     "done": true
   },
-  "minecraft:recipes/combat/brown_harness": {
-    "criteria": {
-      "has_dried_ghast": "2026-04-26 21:35:29 +0530"
-    },
-    "done": true
-  },
   "minecraft:recipes/building_blocks/polished_blackstone_brick_slab_from_polished_blackstone_stonecutting": {
     "criteria": {
       "has_polished_blackstone": "2026-04-26 21:46:19 +0530"
-    },
-    "done": true
-  },
-  "minecraft:recipes/combat/lime_harness": {
-    "criteria": {
-      "has_dried_ghast": "2026-04-26 21:35:29 +0530"
-    },
-    "done": true
-  },
-  "minecraft:recipes/combat/blue_harness": {
-    "criteria": {
-      "has_dried_ghast": "2026-04-26 21:35:29 +0530"
     },
     "done": true
   },

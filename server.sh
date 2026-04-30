@@ -24,7 +24,7 @@ PID_FILE=".server.pid"
 CLEANED_UP=false
 
 get_netbird_ip() {
-    netbird status 2>/dev/null | grep -oP '(?<=IP: )\S+' | head -n1 || true
+    netbird status 2>/dev/null | grep -oP '(?<=IP: )\S+' | head -n1 | cut -d'/' -f1 || true
 }
 
 lock_get() {
@@ -32,8 +32,11 @@ lock_get() {
 }
 
 cleanup_on_exit() {
+    trap - INT TERM
+
     echo ""
     warn "Interrupt received. Cleaning up..."
+
     if [[ -f "$PID_FILE" ]]; then
         MC_PID=$(cat "$PID_FILE")
         if kill -0 "$MC_PID" 2>/dev/null; then
@@ -41,6 +44,7 @@ cleanup_on_exit() {
             wait "$MC_PID" 2>/dev/null || true
         fi
     fi
+
     cmd_stop_cleanup
     exit 0
 }
@@ -71,6 +75,7 @@ cmd_start() {
 
     info "Claiming server lock..."
     TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
     cat > "$LOCK_FILE" <<EOF
 {
   "host": "$PLAYER_NAME",
@@ -80,8 +85,9 @@ cmd_start() {
 EOF
 
     git add "$LOCK_FILE"
-    git commit -m "LOCK: $PLAYER_NAME started the server"
+    git commit -m "LOCK: $PLAYER_NAME started the server" || warn "Lock already committed."
     git push origin "$GITHUB_BRANCH" || error "Could not push lock file."
+
     success "Lock claimed and pushed."
 
     echo ""
@@ -106,6 +112,7 @@ cmd_stop_cleanup() {
     sleep 2
     sync
     sleep 1
+
     info "Pushing world data to GitHub..."
 
     rm -f "$PID_FILE"
@@ -151,6 +158,7 @@ cmd_status() {
     else
         LOCK_IP=$(lock_get "ip")
         LOCK_SINCE=$(lock_get "since")
+
         echo -e "${YELLOW}${BOLD}Server is ACTIVE${NC}"
         echo -e "  Host  : ${BOLD}$LOCK_HOST${NC}"
         echo -e "  IP    : ${BOLD}$LOCK_IP:$SERVER_PORT${NC}"
@@ -162,8 +170,8 @@ cmd_status() {
 }
 
 case "${1:-}" in
-    start)  cmd_start  ;;
-    stop)   cmd_stop   ;;
+    start)  cmd_start ;;
+    stop)   cmd_stop ;;
     status) cmd_status ;;
     *)
         echo -e "Usage: ${CYAN}./server.sh [start|stop|status]${NC}"

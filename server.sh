@@ -96,7 +96,7 @@ EOF
     echo -e "Voice chat runs on UDP port ${CYAN}24454${NC} (same NetBird IP, no extra setup needed)."
     echo -e "Press ${YELLOW}Ctrl+C${NC} or type ${YELLOW}stop${NC} in console to stop.\n"
 
-    java -Xms"$MC_RAM_MIN" -Xmx"$MC_RAM_MAX" -jar server.jar nogui &
+    java -Xms"$MC_RAM_MIN" -Xmx"$MC_RAM_MAX" -jar fabric-server-launch.jar nogui &
     MC_PID=$!
     echo "$MC_PID" > "$PID_FILE"
 

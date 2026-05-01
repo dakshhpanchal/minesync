@@ -59,8 +59,12 @@ fi
 success "NetBird active. Your IP: $NB_IP"
 
 # ── Fabric server setup ──────────────────────────────────────────────────────
-if [[ -f "server.jar" ]]; then
-    warn "server.jar already exists, skipping Fabric install."
+# The Fabric installer produces two files:
+#   server.jar                → vanilla Minecraft jar (Fabric reads this internally)
+#   fabric-server-launch.jar  → the actual Fabric launcher (what we run)
+# We must NOT rename fabric-server-launch.jar — it would overwrite the vanilla jar.
+if [[ -f "fabric-server-launch.jar" ]]; then
+    warn "fabric-server-launch.jar already exists, skipping Fabric install."
 else
     info "Downloading Fabric installer..."
     curl -# -L -o fabric-installer.jar "$FABRIC_INSTALLER_URL" || error "Fabric installer download failed."
@@ -68,12 +72,8 @@ else
     info "Running Fabric installer for Minecraft $MC_VERSION..."
     java -jar fabric-installer.jar server -mcversion "$MC_VERSION" -downloadMinecraft || error "Fabric install failed."
 
-    # The installer creates fabric-server-launch.jar; rename to server.jar for script compatibility
-    if [[ -f "fabric-server-launch.jar" ]]; then
-        mv fabric-server-launch.jar server.jar
-    fi
     rm -f fabric-installer.jar
-    success "Fabric server installed as server.jar."
+    success "Fabric server installed (fabric-server-launch.jar + server.jar)."
 fi
 
 # ── Mods folder and downloads ────────────────────────────────────────────────

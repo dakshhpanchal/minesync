@@ -17,6 +17,15 @@ Repository: https://github.com/dakshhpanchal/minesync
 
 ---
 
+## Stack
+
+- **Server:** Fabric 1.21.11
+- **Mods (server + client):** Simple Voice Chat, Fabric API
+- **Client only:** Sodium (performance), Iris (shaders, optional)
+- **Networking:** NetBird overlay VPN
+
+---
+
 ## NetBird Setup (everyone, once)
 
 ### 1. Get the Setup Key
@@ -24,22 +33,14 @@ Ask the repo owner for the **NetBird Setup Key** from app.netbird.io → Setup K
 
 ### 2. Install NetBird
 
-**Linux:**
 ```bash
 curl -fsSL https://pkgs.netbird.io/install.sh | sh
 sudo netbird up --setup-key YOUR_SETUP_KEY
 ```
 
-**Windows:**
-- Download and install from [netbird.io/download](https://netbird.io/download)
-- Open Command Prompt and run:
-```cmd
-netbird up --setup-key YOUR_SETUP_KEY
-```
-
 ### 3. Verify
 
-```
+```bash
 netbird status
 ```
 
@@ -51,13 +52,12 @@ You should see `Status: Connected` and an IP like `100.x.x.x`
 
 ### Prerequisites
 
-| Requirement | Linux | Windows |
-|---|---|---|
-| Git | `sudo apt install git` | [git-scm.com](https://git-scm.com/download/win) |
-| Java 21+ | `sudo apt install openjdk-21-jdk` | [adoptium.net](https://adoptium.net) |
-| Python 3 | usually pre-installed | [Microsoft Store](https://apps.microsoft.com/store/search/python) or python.org |
-| Minecraft Java 1.21.11 | via launcher | via launcher |
-| NetBird | see above | see above |
+| Requirement | Install |
+|---|---|
+| Git | `sudo apt install git` |
+| Java 21+ | `sudo apt install openjdk-21-jdk` |
+| Python 3 | usually pre-installed |
+| NetBird | see above |
 
 ### 1. Clone the repo
 
@@ -67,8 +67,6 @@ cd minesync
 ```
 
 ### 2. Create `player.config`
-
-Same format on both platforms — create a plain text file named `player.config` in the repo folder:
 
 ```
 PLAYER_NAME="YourNameHere"
@@ -84,28 +82,22 @@ NETBIRD_SETUP_KEY="YOUR_SETUP_KEY_HERE"
 
 ### 3. Run init
 
-**Linux:**
 ```bash
 chmod +x init.sh server.sh
 ./init.sh
 ```
 
-**Windows:**
-```cmd
-init.bat
-```
+This will:
+- Download the Fabric server installer and run it
+- Download server-side mods into `mods/`
+- Verify all required files are present
 
 ---
 
 ## Starting the Server
 
-**Linux:**
 ```bash
 ./server.sh start
-```
-**Windows:**
-```cmd
-server.bat start
 ```
 
 - Pulls latest world from GitHub
@@ -120,13 +112,8 @@ server.bat start
 
 Type `stop` in the Minecraft server console, or in another terminal:
 
-**Linux:**
 ```bash
 ./server.sh stop
-```
-**Windows:**
-```cmd
-server.bat stop
 ```
 
 Automatically pushes world data and releases the lock.
@@ -135,13 +122,8 @@ Automatically pushes world data and releases the lock.
 
 ## Checking Who Is Hosting
 
-**Linux:**
 ```bash
 ./server.sh status
-```
-**Windows:**
-```cmd
-server.bat status
 ```
 
 ---
@@ -149,8 +131,31 @@ server.bat status
 ## Connecting as a Player
 
 1. Make sure NetBird is running (`netbird status`)
-2. Run `status` (see above) to get the host's IP
+2. Run `./server.sh status` to get the host's IP
 3. Minecraft → Multiplayer → Add Server → `IP:25565`
+
+---
+
+## Client Mod Setup (everyone, once)
+
+The server runs Fabric, so each player needs a Fabric profile in their launcher with these mods installed.
+
+### 1. Create a Fabric 1.21.11 profile in your launcher
+
+In TLauncher, select `Fabric 1.21.11` as the version when creating a new profile.
+
+### 2. Download these mods into `~/.minecraft/mods/`
+
+| Mod | Purpose | Download |
+|---|---|---|
+| Fabric API | Required by all mods | [fabric-api-0.141.3+1.21.11.jar](https://cdn.modrinth.com/data/P7dR8mSH/versions/i5tSkVBH/fabric-api-0.141.3%2B1.21.11.jar) |
+| Simple Voice Chat | In-game voice chat | [voicechat-fabric-1.21.11-2.6.9.jar](https://cdn.modrinth.com/data/9eGKb6K1/versions/YECcGHNV/voicechat-fabric-1.21.11-2.6.9.jar) |
+| Sodium | Performance (replaces OptiFine) | [sodium-fabric-0.8.7+mc1.21.11.jar](https://cdn.modrinth.com/data/AANobbMI/versions/UddlN6L4/sodium-fabric-0.8.7%2Bmc1.21.11.jar) |
+| Iris *(optional)* | Shader pack support | [modrinth.com/mod/iris](https://modrinth.com/mod/iris/versions?g=1.21.11) |
+
+### 3. Launch the Fabric profile and connect
+
+Voice chat keybind is **V** by default. You should see a speaker icon when someone is talking.
 
 ---
 
@@ -158,20 +163,34 @@ server.bat status
 
 | Problem | Fix |
 |---|---|
-| `NetBird IP not found` | Linux: `sudo netbird up --setup-key YOUR_KEY` / Windows: `netbird up --setup-key YOUR_KEY` |
-| `Server already being hosted` | Run `status` to see who |
+| `NetBird IP not found` | `sudo netbird up --setup-key YOUR_KEY` |
+| `Server already being hosted` | Run `./server.sh status` to see who |
 | `Git pull failed` | Check internet / GitHub access |
-| `Java 21 required` | Install from adoptium.net |
-| Friends can't connect | Make sure they're connected to NetBird (`netbird status`) |
+| `Java 21 required` | `sudo apt install openjdk-21-jdk` |
+| Friends can't connect | Make sure they're on NetBird (`netbird status`) |
 | `player.config not found` | Create it as shown above |
-| Colors look broken on Windows | Run `reg add HKCU\Console /v VirtualTerminalLevel /t REG_DWORD /d 1` then reopen terminal |
-| Python not found on Windows | Install from Microsoft Store or python.org |
+| Voice chat not working | Press V → Settings → check mic input level bar moves when you talk |
+| Stuck on loading screen | Make sure you launched the Fabric profile, not OptiFine/vanilla |
 
 ---
 
 ## Important Rules
 
 - Only one person hosts at a time
-- Always stop the server properly — don't just close the terminal/window
+- Always stop the server properly — don't just close the terminal
 - Never push with `git push --force`
 - Never edit `.server.lock` manually
+
+---
+
+## .gitignore
+
+Make sure your `.gitignore` includes:
+
+```
+libraries/
+.fabric/
+logs/
+crash-reports/
+fabric-installer.jar
+```

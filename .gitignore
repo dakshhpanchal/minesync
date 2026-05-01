@@ -1,8 +1,7 @@
 server.jar
-
+fabric-server-launch.jar
 logs/
 crash-reports/
-
 usercache.json
 banned-ips.json
 banned-players.json
@@ -11,6 +10,8 @@ ops.json.bak
 *.lock.bak
 digest.txt
 player.config
-
 .DS_Store
-Thumbs.dbs
+Thumbs.db
+libraries/
+.fabric/
+fabric-installer.jar

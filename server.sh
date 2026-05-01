@@ -91,8 +91,9 @@ EOF
     success "Lock claimed and pushed."
 
     echo ""
-    echo -e "${BOLD}${GREEN}Starting Minecraft $MC_VERSION server...${NC}"
+    echo -e "${BOLD}${GREEN}Starting Fabric $MC_VERSION server...${NC}"
     echo -e "Connect via NetBird: ${CYAN}$NB_IP:$SERVER_PORT${NC}"
+    echo -e "Voice chat runs on UDP port ${CYAN}24454${NC} (same NetBird IP, no extra setup needed)."
     echo -e "Press ${YELLOW}Ctrl+C${NC} or type ${YELLOW}stop${NC} in console to stop.\n"
 
     java -Xms"$MC_RAM_MIN" -Xmx"$MC_RAM_MAX" -jar server.jar nogui &
@@ -165,6 +166,7 @@ cmd_status() {
         echo -e "  Since : ${BOLD}$LOCK_SINCE${NC}"
         echo ""
         echo -e "Connect via NetBird: ${CYAN}$LOCK_IP:$SERVER_PORT${NC}"
+        echo -e "Voice chat (UDP):    ${CYAN}$LOCK_IP:24454${NC}"
     fi
     echo ""
 }

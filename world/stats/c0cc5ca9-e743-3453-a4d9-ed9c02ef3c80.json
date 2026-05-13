@@ -1,0 +1,27 @@
+{
+  "stats": {
+    "minecraft:mined": {
+      "minecraft:grass_block": 2
+    },
+    "minecraft:picked_up": {
+      "minecraft:dirt": 1
+    },
+    "minecraft:used": {
+      "minecraft:wooden_pickaxe": 2
+    },
+    "minecraft:custom": {
+      "minecraft:interact_with_crafting_table": 1,
+      "minecraft:open_chest": 2,
+      "minecraft:time_since_rest": 1811,
+      "minecraft:fall_one_cm": 225,
+      "minecraft:walk_one_cm": 15370,
+      "minecraft:total_world_time": 1811,
+      "minecraft:crouch_one_cm": 247,
+      "minecraft:sneak_time": 22,
+      "minecraft:play_time": 1811,
+      "minecraft:jump": 13,
+      "minecraft:time_since_death": 1811
+    }
+  },
+  "DataVersion": 4671
+}

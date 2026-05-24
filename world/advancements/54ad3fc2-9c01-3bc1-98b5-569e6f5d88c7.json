@@ -300,25 +300,28 @@
       "minecraft:blaze": "2026-04-05 03:19:00 +0530",
       "minecraft:pillager": "2026-05-12 21:33:16 +0530",
       "minecraft:skeleton": "2026-04-04 02:31:38 +0530",
+      "minecraft:ravager": "2026-05-25 01:52:59 +0530",
+      "minecraft:ghast": "2026-04-05 03:10:18 +0530",
+      "minecraft:hoglin": "2026-04-26 21:50:36 +0530",
+      "minecraft:breeze": "2026-05-05 23:03:12 +0530",
+      "minecraft:zombie_horse": "2026-05-12 21:42:13 +0530",
+      "minecraft:vindicator": "2026-05-12 22:03:24 +0530",
+      "minecraft:magma_cube": "2026-04-05 03:03:24 +0530",
+      "minecraft:spider": "2026-04-04 15:05:24 +0530",
+      "minecraft:piglin_brute": "2026-04-26 20:47:44 +0530",
+      "minecraft:creeper": "2026-04-06 11:29:18 +0530",
+      "minecraft:slime": "2026-05-06 00:00:52 +0530",
+      "minecraft:evoker": "2026-05-25 01:56:12 +0530",
       "minecraft:phantom": "2026-04-06 12:48:56 +0530",
       "minecraft:zombified_piglin": "2026-04-26 21:33:37 +0530",
       "minecraft:witch": "2026-04-08 04:09:51 +0530",
       "minecraft:wither_skeleton": "2026-04-05 03:15:00 +0530",
-      "minecraft:ghast": "2026-04-05 03:10:18 +0530",
-      "minecraft:hoglin": "2026-04-26 21:50:36 +0530",
       "minecraft:piglin": "2026-04-05 03:08:42 +0530",
-      "minecraft:breeze": "2026-05-05 23:03:12 +0530",
-      "minecraft:zombie_horse": "2026-05-12 21:42:13 +0530",
-      "minecraft:vindicator": "2026-05-12 22:03:24 +0530",
       "minecraft:enderman": "2026-04-08 02:18:03 +0530",
-      "minecraft:magma_cube": "2026-04-05 03:03:24 +0530",
-      "minecraft:spider": "2026-04-04 15:05:24 +0530",
-      "minecraft:piglin_brute": "2026-04-26 20:47:44 +0530",
+      "minecraft:vex": "2026-05-25 01:56:23 +0530",
       "minecraft:zombie": "2026-04-04 02:12:34 +0530",
-      "minecraft:creeper": "2026-04-06 11:29:18 +0530",
       "minecraft:drowned": "2026-04-13 00:04:41 +0530",
-      "minecraft:zombie_villager": "2026-04-05 14:37:07 +0530",
-      "minecraft:slime": "2026-05-06 00:00:52 +0530"
+      "minecraft:zombie_villager": "2026-04-05 14:37:07 +0530"
     },
     "done": false
   },
@@ -4035,6 +4038,12 @@
   "minecraft:adventure/voluntary_exile": {
     "criteria": {
       "voluntary_exile": "2026-05-12 22:00:00 +0530"
+    },
+    "done": true
+  },
+  "minecraft:adventure/hero_of_the_village": {
+    "criteria": {
+      "hero_of_the_village": "2026-05-25 02:01:19 +0530"
     },
     "done": true
   },

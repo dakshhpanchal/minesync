@@ -210,6 +210,7 @@
       "minecraft:cave_spider": "2026-04-04 19:15:51 +0530",
       "minecraft:piglin": "2026-05-27 00:24:17 +0530",
       "minecraft:breeze": "2026-05-30 16:09:11 +0530",
+      "minecraft:vindicator": "2026-06-17 03:22:25 +0530",
       "minecraft:enderman": "2026-04-05 04:26:41 +0530",
       "minecraft:silverfish": "2026-05-27 01:22:27 +0530",
       "minecraft:magma_cube": "2026-04-05 03:03:42 +0530",
@@ -4256,18 +4257,6 @@
     },
     "done": true
   },
-  "minecraft:recipes/misc/bowl": {
-    "criteria": {
-      "has_brown_mushroom": "2026-06-09 14:24:57 +0530"
-    },
-    "done": true
-  },
-  "minecraft:recipes/misc/black_dye": {
-    "criteria": {
-      "has_ink_sac": "2026-06-09 14:16:40 +0530"
-    },
-    "done": true
-  },
   "minecraft:recipes/misc/stick_from_bamboo_item": {
     "criteria": {
       "has_bamboo": "2026-06-09 13:51:51 +0530"
@@ -4283,6 +4272,48 @@
   "minecraft:recipes/decorations/scaffolding": {
     "criteria": {
       "has_bamboo": "2026-06-09 13:51:51 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/black_dye": {
+    "criteria": {
+      "has_ink_sac": "2026-06-09 14:16:40 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/bowl": {
+    "criteria": {
+      "has_brown_mushroom": "2026-06-09 14:24:57 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/bookshelf": {
+    "criteria": {
+      "has_book": "2026-06-17 03:36:56 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/lectern": {
+    "criteria": {
+      "has_book": "2026-06-17 03:36:56 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/chiseled_bookshelf": {
+    "criteria": {
+      "has_book": "2026-06-17 03:36:56 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/writable_book": {
+    "criteria": {
+      "has_book": "2026-06-17 03:36:56 +0530"
+    },
+    "done": true
+  },
+  "minecraft:adventure/hero_of_the_village": {
+    "criteria": {
+      "hero_of_the_village": "2026-06-17 03:34:21 +0530"
     },
     "done": true
   },
